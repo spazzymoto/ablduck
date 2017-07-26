@@ -216,8 +216,10 @@ Ext.define('Docs.view.cls.Toolbar', {
      */
     showMenuItems: function(show, isSearch, re) {
         Ext.Array.forEach(Docs.data.memberTypes, function(type) {
-            var btn = this.memberButtons[type.name];
-            if (btn) {
+            
+            if (this.memberButtons.hasOwnProperty(type.name)) {
+                var btn = this.memberButtons[type.name];
+
                 btn.getStore().filterBy(function(m) {
                     return !(
                         !show['public']    && !(m.get("meta")["private"] || m.get("meta")["protected"]) ||
