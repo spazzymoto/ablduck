@@ -18,7 +18,7 @@
           .deprecated-tag-box strong {
             text-transform: uppercase;
             border-radius: 2px;
-            padding: 0 3px;
+            padding: 3px 3px 0;
           }
 
         .enum-box {
@@ -48,7 +48,7 @@
           .deprecated-tag-box strong {
             text-transform: uppercase;
             border-radius: 2px;
-            padding: 0 3px;
+            padding: 3px 3px 0;
           }
 
         .signature .new {
@@ -91,7 +91,7 @@
           .deprecated-tag-box strong {
             text-transform: uppercase;
             border-radius: 2px;
-            padding: 0 3px;
+            padding: 3px 3px 0;
           }
 
 .signature .required { background-color: #484848 }
@@ -124,3 +124,18 @@
 .members .members-section .icon-css_mixin { background-image: url(member-icons/css_mixin.png); background-repeat: no-repeat; }
 .members .comments-section .icon-css_mixin { background-image: url(member-icons/css_mixin.png); background-repeat: no-repeat; }
 .class-overview .x-toolbar.member-links .icon-css_mixin { background-image: url(member-icons/css_mixin.png); background-repeat: no-repeat; }
+
+#search-dropdown .icon-procedure { background-image: url(member-icons/procedure.png); background-repeat: no-repeat; }
+.members .members-section .icon-procedure { background-image: url(member-icons/procedure.png); background-repeat: no-repeat; }
+.members .comments-section .icon-procedure { background-image: url(member-icons/procedure.png); background-repeat: no-repeat; }
+.class-overview .x-toolbar.member-links .icon-procedure { background-image: url(member-icons/procedure.png); background-repeat: no-repeat; }
+
+#search-dropdown .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
+.members .members-section .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
+.members .comments-section .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
+.class-overview .x-toolbar.member-links .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
+
+
+.private-box p, .deprecated-box p {
+  max-width: none !important;
+}

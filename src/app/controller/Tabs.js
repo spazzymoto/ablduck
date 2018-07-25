@@ -18,6 +18,10 @@ Ext.define('Docs.controller.Tabs', {
             selector: '#classindex'
         },
         {
+            ref: 'procedureIndex',
+            selector: '#procedureindex'
+        },
+        {
             ref: 'guideIndex',
             selector: '#guideindex'
         },
@@ -34,12 +38,12 @@ Ext.define('Docs.controller.Tabs', {
             selector: '#testsindex'
         },
         {
-            ref: 'commentIndex',
-            selector: '#commentindex'
-        },
-        {
             ref: 'classTree',
             selector: '#classtree'
+        },
+        {
+            ref: 'procedureTree',
+            selector: '#proceduretree'
         },
         {
             ref: 'guideTree',
@@ -62,7 +66,14 @@ Ext.define('Docs.controller.Tabs', {
     init: function() {
         this.getController('Classes').addListener({
             showClass: function(cls) {
-                this.addTabFromTree("#!/api/"+cls);
+                this.addTabFromTree("#!/class/"+cls);
+            },
+            scope: this
+        });
+
+        this.getController('Procedures').addListener({
+            showProcedure: function(cls) {
+                this.addTabFromTree("#!/procedure/"+cls);
             },
             scope: this
         });
@@ -103,15 +114,12 @@ Ext.define('Docs.controller.Tabs', {
         this.getDoctabs().setStaticTabs(Ext.Array.filter([
             this.getWelcomeIndex().getTab(),
             this.getClassIndex().getTab(),
+            this.getProcedureIndex().getTab(),
             this.getGuideIndex().getTab(),
             this.getVideoIndex().getTab(),
             this.getExampleIndex().getTab(),
             this.getTestsIndex().getTab()
         ], function(x){return x;}));
-
-        // just initialize the comments tab.
-        // show/hide of it is performed separately.
-        this.commentsTab = this.getCommentIndex().getTab();
 
         var tabs = Docs.Settings.get('tabs');
         if (tabs) {
@@ -120,22 +128,6 @@ Ext.define('Docs.controller.Tabs', {
             }, this);
         }
         Docs.History.notifyTabsLoaded();
-    },
-
-    /**
-     * Makes comments tab visible.
-     */
-    showCommentsTab: function() {
-        var tabs = this.getDoctabs().getStaticTabs();
-        this.getDoctabs().setStaticTabs(tabs.concat(this.commentsTab));
-    },
-
-    /**
-     * Hides comments tab.
-     */
-    hideCommentsTab: function() {
-        var tabs = this.getDoctabs().getStaticTabs();
-        this.getDoctabs().setStaticTabs(Ext.Array.remove(tabs, this.commentsTab));
     },
 
     /**
@@ -164,8 +156,11 @@ Ext.define('Docs.controller.Tabs', {
 
     // Determines tree from an URL
     getTree: function(url) {
-        if (/#!?\/api/.test(url)) {
+        if (/#!?\/class/.test(url)) {
             return this.getClassTree();
+        }
+        else if (/#!?\/procedure/.test(url)) {
+            return this.getProcedureTree();
         }
         else if (/#!?\/guide/.test(url)) {
             return this.getGuideTree();

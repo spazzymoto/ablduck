@@ -96,7 +96,7 @@ Ext.define('Docs.view.cls.PackageLogic', {
     classNode: function(cls) {
       return {
         text: Docs.ClassRegistry.shortName(cls.name),
-        url: "#!/api/"+cls.name,
+        url: "#!/class/"+cls.name,
         iconCls: cls.icon,
         cls: cls["private"] ? "private" : "",
         leaf: true,

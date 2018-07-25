@@ -6,7 +6,6 @@ Ext.define('Docs.view.cls.Index', {
     alias: 'widget.classindex',
     requires: [
         'Docs.ContentGrabber',
-        'Docs.Comments'
     ],
     mixins: ['Docs.view.Scrolling'],
     cls: 'class-categories iScroll',
@@ -15,7 +14,7 @@ Ext.define('Docs.view.cls.Index', {
 
     initComponent: function() {
         this.tpl = new Ext.XTemplate(
-            '<h1 class="top" style="padding-bottom: 10px">API Documentation</h1>',
+            '<h1 class="top" style="padding-bottom: 10px">Class Documentation</h1>',
             '<tpl if="notice">',
                 '<div class="notice">{notice}</div>',
             '</tpl>',
@@ -33,34 +32,6 @@ Ext.define('Docs.view.cls.Index', {
 
     afterRender: function() {
         this.callParent(arguments);
-
-        if (!Docs.Comments.isEnabled()) {
-            return;
-        }
-
-        this.initComments();
-    },
-
-    initComments: function() {
-        this.getEl().select("a.docClass").each(function(a) {
-            var className = a.getHTML();
-            var count = Docs.Comments.getClassTotalCount(className);
-            if (count) {
-                Ext.DomHelper.append(a, Docs.Comments.counterHtml(count));
-            }
-        }, this);
-    },
-
-    /**
-     * Updates all comment counters.
-     */
-    updateCommentCounts: function() {
-        if (!this.getEl()) {
-            return;
-        }
-
-        this.getEl().select(".comment-counter-small").remove();
-        this.initComments();
     },
 
     /**
@@ -69,6 +40,6 @@ Ext.define('Docs.view.cls.Index', {
      */
     getTab: function() {
         var enabled = (Docs.data.classes || []).length > 0;
-        return enabled ? {cls: 'classes', href: '#!/api', tooltip: 'API Documentation'} : false;
+        return enabled ? {cls: 'classes', href: '#!/class', tooltip: 'Class Documentation'} : false;
     }
 });

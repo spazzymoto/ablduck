@@ -44,11 +44,17 @@ Ext.define("Docs.History", {
      */
     navigate: function(token, noHistory) {
         var url = this.parseToken(token);
-        if (url.url == "#!/api") {
+        if (url.url == "#!/class") {
             Docs.App.getController('Classes').loadIndex(noHistory);
         }
-        else if (url.type === "api") {
+        else if (url.type === "class") {
             Docs.App.getController('Classes').loadClass(url.url, noHistory);
+        }
+        else if (url.url == "#!/procedure") {
+            Docs.App.getController('Procedures').loadIndex(noHistory);
+        }
+        else if (url.type === "procedure") {
+            Docs.App.getController('Procedures').loadProcedure(url.url, noHistory);
         }
         else if (url.url === "#!/guide") {
             Docs.App.getController('Guides').loadIndex(noHistory);
@@ -67,9 +73,6 @@ Ext.define("Docs.History", {
         }
         else if (url.type === "example") {
             Docs.App.getController('Examples').loadExample(url.url, noHistory);
-        }
-        else if (url.url === "#!/comment") {
-            Docs.App.getController('Comments').loadIndex();
         }
         else if (url.url === "#!/tests") {
             Docs.App.getController('Tests').loadIndex();
@@ -90,7 +93,7 @@ Ext.define("Docs.History", {
 
     // Parses current browser location
     parseToken: function(token) {
-        var matches = token && token.match(/!?(\/(api|guide|example|video|comment|tests)(\/(.*))?)/);
+        var matches = token && token.match(/!?(\/(class|procedure|guide|example|video|tests)(\/(.*))?)/);
         return matches ? {type: matches[2], url: "#!"+matches[1]} : {};
     },
 

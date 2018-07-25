@@ -9,10 +9,10 @@ Ext.define('Docs.view.Viewport', {
         'Docs.view.Tabs',
         'Docs.view.TreeContainer',
         'Docs.view.welcome.Index',
-        'Docs.view.auth.HeaderForm',
-        'Docs.view.comments.Index',
         'Docs.view.cls.Index',
         'Docs.view.cls.Container',
+        'Docs.view.prc.Index',
+        'Docs.view.prc.Container',
         'Docs.view.guides.Index',
         'Docs.view.guides.Container',
         'Docs.view.videos.Index',
@@ -48,11 +48,6 @@ Ext.define('Docs.view.Viewport', {
                                 xtype: 'docheader'
                             },
                             {   xtype: 'container', flex: 1 },
-                            {
-                                id: 'loginContainer',
-                                xtype: 'authHeaderForm',
-                                padding: '10 20 0 0'
-                            },
                             {
                                 xtype: 'searchcontainer',
                                 id: 'search-container',
@@ -113,6 +108,15 @@ Ext.define('Docs.view.Viewport', {
                                 },
                                 {
                                     autoScroll: true,
+                                    xtype: 'procedureindex',
+                                    id: 'procedureindex'
+                                },
+                                {
+                                    xtype: 'procedurecontainer',
+                                    id: 'procedurecontainer'
+                                },
+                                {
+                                    autoScroll: true,
                                     xtype: 'guideindex',
                                     id: 'guideindex'
                                 },
@@ -137,16 +141,12 @@ Ext.define('Docs.view.Viewport', {
                                     id: 'exampleindex'
                                 },
                                 {
-                                    xtype: Docs.data.touchExamplesUi ? 'touchexamplecontainer' : 'examplecontainer',
+                                    xtype: 'examplecontainer',
                                     id: 'example'
                                 },
                                 {
                                     xtype: 'testsindex',
                                     id: 'testsindex'
-                                },
-                                {
-                                    xtype: 'commentindex',
-                                    id: 'commentindex'
                                 }
                             ]
                         }

@@ -8,10 +8,6 @@ Ext.define('Docs.view.guides.Container', {
     alias: 'widget.guidecontainer',
     componentCls: 'guide-container',
     mixins: ['Docs.view.Scrolling'],
-    requires: [
-        "Docs.Comments",
-        "Docs.view.comments.LargeExpander"
-    ],
 
     initComponent: function() {
         this.addEvents(
@@ -59,28 +55,6 @@ Ext.define('Docs.view.guides.Container', {
         this.update(this.tpl.apply(guide));
         Docs.Syntax.highlight(this.getEl());
 
-        if (Docs.Comments.isEnabled()) {
-            this.initComments();
-        }
-
         this.fireEvent('afterload');
-    },
-
-    initComments: function() {
-        this.expander = new Docs.view.comments.LargeExpander({
-            type: "guide",
-            name: this.guide.name,
-            el: this.getEl().down(".x-panel-body")
-        });
-    },
-
-    /**
-     * Updates the comments counter.
-     */
-    updateCommentCounts: function() {
-        if (!this.expander) {
-            return;
-        }
-        this.expander.getExpander().setCount(Docs.Comments.getCount(["guide", this.guide.name, ""]));
     }
 });

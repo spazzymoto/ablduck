@@ -132,7 +132,7 @@ Ext.define('Docs.view.HoverMenuButton', {
 
             // position menu right below button and show it
             var p = this.getEl().getXY(),
-                toolbar = Ext.ComponentQuery.query('classoverview toolbar')[0],
+                toolbar = Ext.ComponentQuery.query('classoverview toolbar')[0] || Ext.ComponentQuery.query('procedureoverview toolbar')[0],
                 leftOffset = p[0]-10,
                 toolbarOffset = toolbar.getEl().getXY(),
                 toolbarWidth = toolbar.getWidth(),

@@ -60,7 +60,7 @@ Ext.define('Docs.view.cls.InheritanceLogic', {
     classNode: function(cls) {
       return {
         text: cls.name,
-        url: "#!/api/"+cls.name,
+        url: "#!/class/"+cls.name,
         iconCls: cls.icon,
         cls: cls["private"] ? "private" : ""
       };

@@ -14,8 +14,6 @@ Ext.define('Docs.view.examples.Index', {
     autoScroll: true,
 
     initComponent: function() {
-        this.cls += Docs.data.touchExamplesUi ? " touch-examples-ui" : "";
-
         this.items = [
             { xtype: 'container', html: '<h1 class="eg">Examples</h1>' },
             Ext.create('Docs.view.ThumbList', {

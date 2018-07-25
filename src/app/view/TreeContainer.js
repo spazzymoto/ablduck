@@ -6,6 +6,7 @@ Ext.define('Docs.view.TreeContainer', {
     alias: 'widget.treecontainer',
     requires: [
         'Docs.view.cls.Tree',
+        'Docs.view.prc.Tree',
         'Docs.view.GroupTree'
     ],
 
@@ -32,6 +33,11 @@ Ext.define('Docs.view.TreeContainer', {
                 xtype: 'classtree',
                 id: 'classtree',
                 data: Docs.data.classes
+            },
+            {
+                xtype: 'proceduretree',
+                id: 'proceduretree',
+                data: Docs.data.procedures
             },
             {
                 xtype: 'grouptree',

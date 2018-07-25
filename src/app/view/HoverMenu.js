@@ -4,7 +4,6 @@
 Ext.define('Docs.view.HoverMenu', {
     extend: 'Ext.view.View',
     requires: [
-        'Docs.Comments',
         'Docs.view.Signature'
     ],
 
@@ -43,8 +42,7 @@ Ext.define('Docs.view.HoverMenu', {
 
                 renderLink: function(values) {
                     var tags = Docs.view.Signature.render(values.meta);
-                    var cnt = Docs.Comments.counterHtml(values.commentCount);
-                    return Ext.String.format('<a href="#!/api/{0}" rel="{0}" class="docClass">{1} {2} {3}</a>', values.url, values.label, tags, cnt);
+                    return Ext.String.format('<a href="#!/{0}/{1}" rel="{1}" class="docClass">{2} {3}</a>', values.baseUrl, values.url, values.label, tags);
                 }
             }
         );

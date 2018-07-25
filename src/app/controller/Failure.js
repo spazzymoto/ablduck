@@ -29,8 +29,8 @@ Ext.define('Docs.controller.Failure', {
             "This would be sad. Hopefully it's just a bug on our side.</p>",
             "<p>Most likely you just followed a broken link inside this very documentation. ",
             "Go and report it to the authors of the docs.</p>",
-            "<p>But if you think it's a bug in JSDuck documentation-generator itself, feel free to open ",
-            "an issue at the <a href='https://github.com/senchalabs/jsduck/issues'>JSDuck issue tracker</a>.</p>",
+            "<p>But if you think it's a bug in ABLDuck documentation-generator itself, feel free to open ",
+            "an issue at the <a href='https://github.com/spazzymoto/ablduck/issues'>ABLDuck issue tracker</a>.</p>",
             "<p>Sorry for all this :(</p>"
         );
         Ext.getCmp("failure").update(tpl.apply({msg: msg}));

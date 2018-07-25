@@ -6,7 +6,6 @@ Ext.define('Docs.view.cls.Toolbar', {
     requires: [
         'Docs.view.HoverMenuButton',
         'Docs.Settings',
-        'Docs.Comments',
         'Ext.form.field.Checkbox'
     ],
 
@@ -27,11 +26,6 @@ Ext.define('Docs.view.cls.Toolbar', {
              * @param {String} type Type of button that was clicked "cfg", "method", "event", etc
              */
             "menubuttonclick",
-            /**
-             * @event commentcountclick
-             * Fired when the comment count button clicked.
-             */
-            "commentcountclick",
             /**
              * @event filter
              * Fires when text typed to filter, or one of the hide-checkboxes clicked.
@@ -117,7 +111,6 @@ Ext.define('Docs.view.cls.Toolbar', {
                 }
             }),
             { xtype: 'tbspacer', width: 10 },
-            this.commentCount = this.createCommentCount(),
             {
                 xtype: 'button',
                 text: 'Show',
@@ -190,7 +183,7 @@ Ext.define('Docs.view.cls.Toolbar', {
     // creates store tha holds link records
     createStore: function(records) {
         var store = Ext.create('Ext.data.Store', {
-            fields: ['id', 'url', 'label', 'inherited', 'meta', 'commentCount']
+            fields: ['id', 'url', 'label', 'inherited', 'meta', 'baseUrl']
         });
         store.add(records);
         return store;
@@ -201,10 +194,10 @@ Ext.define('Docs.view.cls.Toolbar', {
         return {
             id: member.id,
             url: cls + "-" + member.id,
-            label: (member.tagname === "method" && member.name === "constructor") ? "new "+cls : member.name,
+            label: member.name,
             inherited: member.owner !== cls,
             meta: member.meta,
-            commentCount: Docs.Comments.getCount(["class", cls, member.id])
+            baseUrl: "class"
         };
     },
 
@@ -216,10 +209,8 @@ Ext.define('Docs.view.cls.Toolbar', {
      */
     showMenuItems: function(show, isSearch, re) {
         Ext.Array.forEach(Docs.data.memberTypes, function(type) {
-            
-            if (this.memberButtons.hasOwnProperty(type.name)) {
-                var btn = this.memberButtons[type.name];
-
+            var btn = this.memberButtons[type.name];
+            if (btn && typeof btn === 'object') {
                 btn.getStore().filterBy(function(m) {
                     return !(
                         !show['public']    && !(m.get("meta")["private"] || m.get("meta")["protected"]) ||
@@ -251,48 +242,5 @@ Ext.define('Docs.view.cls.Toolbar', {
      */
     getFilterValue: function() {
         return this.filterField.getValue();
-    },
-
-    createCommentCount: function() {
-        return Ext.create('Ext.container.Container', {
-            width: 24,
-            margin: '0 4 0 0',
-            cls: 'comment-btn',
-            html: '0',
-            hidden: true,
-            listeners: {
-                afterrender: function(cmp) {
-                    cmp.el.addListener('click', function() {
-                        this.fireEvent("commentcountclick");
-                    }, this);
-                },
-                scope: this
-            }
-        });
-    },
-
-    /**
-     * Makes the comment-count button visible.
-     */
-    showCommentCount: function() {
-        this.commentCount.show();
-    },
-
-    /**
-     * Updates the number shown on comment count button.
-     *
-     * @param {Number} n
-     */
-    setCommentCount: function(n) {
-        this.commentCount.update(""+(n||0));
-        this.refreshMenuCommentCounts();
-    },
-
-    refreshMenuCommentCounts: function() {
-        Ext.Object.each(this.memberButtons, function(key, btn) {
-            btn.getStore().each(function(r) {
-                r.set("commentCount", Docs.Comments.getCount(["class", this.docClass.name, r.get("id")]));
-            }, this);
-        }, this);
     }
 });

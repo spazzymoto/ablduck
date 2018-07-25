@@ -32,8 +32,8 @@ function decode_file($filename) {
 
 // Turns #! links into ?print= links when in print mode.
 //
-// <a href="#!/api/Ext.Element">  -->  <a href="?print=/api/Ext.Element">
-// <a href="#!/api/Ext.Element-cfg-id">  -->  <a href="?print=/api/Ext.Element#cfg-id">
+// <a href="#!/class/Ext.Element">  -->  <a href="?print=/class/Ext.Element">
+// <a href="#!/class/Ext.Element-cfg-id">  -->  <a href="?print=/class/Ext.Element#cfg-id">
 //
 function fix_links($html) {
   if (isset($_GET["print"]) || isset($_GET["mobile"])) {
@@ -65,12 +65,12 @@ if (isset($_GET["_escaped_fragment_"]) || isset($_GET["print"]) || isset($_GET["
   }
 
   try {
-    if (preg_match('/^\/api\/([^-]+)/', $fragment, $m)) {
+    if (preg_match('/^\/class\/([^-]+)/', $fragment, $m)) {
       $className = $m[1];
       $json = decode_file("output/".$className.".js");
       print_page($className, "<h1>" . $className . "</h1>\n" . $json["html"], $fragment);
     }
-    elseif (preg_match('/^\/api\/?$/', $fragment, $m)) {
+    elseif (preg_match('/^\/class\/?$/', $fragment, $m)) {
       print_index_page();
     }
     elseif (preg_match('/^\/guide\/(.+?)(-section-.+)?$/', $fragment, $m)) {

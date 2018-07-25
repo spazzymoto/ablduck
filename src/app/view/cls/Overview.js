@@ -8,12 +8,9 @@ Ext.define('Docs.view.cls.Overview', {
     requires: [
         'Docs.view.cls.Toolbar',
         'Docs.view.examples.Inline',
-        'Docs.view.comments.LargeExpander',
         'Docs.view.cls.MemberWrap',
-        'Docs.view.comments.MemberWrap',
         'Docs.Syntax',
         'Docs.Settings',
-        'Docs.Comments'
     ],
     mixins: ['Docs.view.Scrolling'],
 
@@ -75,6 +72,9 @@ Ext.define('Docs.view.cls.Overview', {
      * @param {Object} docClass
      */
     load: function(docClass) {
+        if (!Docs.data.classLinkCache)
+            Docs.data.classLinkCache = {};
+
         this.docClass = docClass;
 
         if (this.toolbar) {
@@ -94,49 +94,279 @@ Ext.define('Docs.view.cls.Overview', {
                 menubuttonclick: function(type) {
                     this.scrollToEl("h3.members-title.icon-"+type, -20);
                 },
-                commentcountclick: this.expandClassComments,
                 scope: this
             }
         });
         this.addDocked(this.toolbar);
 
-        this.update(docClass.html);
+        var tpl = new Ext.XTemplate(
+            "<div>",
+                "<pre class=\"hierarchy\">",
+                    "<h4>Hierarchy</h4>",
+                    "<tpl for=\"superclasses\">",
+                        '<div class="subclass<tpl if="xindex===1"> first-child</tpl>" style="{[ xindex > 1 ? \"margin-left:\" + (15 + (12 * (xindex-2))) + \"px; \" : "" ]}list-style: none;">',
+                            '{[ xindex == xcount ? "<strong>" + values + "</strong>" : "<a href=\'#!/class/" + values + "\' rel=\'" + values + "\' class=\'docClass\'>" + values + "</a>" ]}',
+                        "</div>",
+                    "</tpl>",
+                "</pre>",
+                "<div class=\"doc-contents\">",
+                    "<tpl if=\"meta.internal\">",
+                        "<div class=\"rounded-box private-box\">",
+                            "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
+                        "</div>",
+                        "</br>",
+                    "</tpl>",
+                    "<tpl if=\"meta.deprecated\">",
+                        "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
+                            "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
+                            "{meta.deprecated.text}",
+                        "</div>",
+                        "</br>",
+                    "</tpl>",
+                    "{comment}",
+                    "<div class=\"members\">",
+
+                        "<tpl if=\"this.hasMember(members, 'constructor')\">",
+                            "<div class=\"members-section\">",
+                                "<h3 class=\"members-title icon-constructor\">Constructors</h3>",
+                                "<div class=\"subsection\">",
+                                    "<tpl for=\"members\">",
+                                        "<tpl if=\"tagname == 'constructor'\">",
+
+                                            "<div id=\"{id}\" class=\"member <tpl if=\"xindex===1\">first-child</tpl> <tpl if=\"parent.name == owner\">not-inherited<tpl else>inherited</tpl>\">",
+                                                "<a href=\"#\" class=\"side expandable\">",
+                                                    "<span>&nbsp;</span>",
+                                                "</a>",
+                                                "<div class=\"title\">",
+                                                    "<div class=\"meta\">",
+                                                        "<tpl if=\"parent.name != owner\"><a href=\"#!/class/{owner}\" rel=\"{owner}\" class=\"defined-in docClass\">{owner}</a>",
+                                                        "<tpl else><span class=\"defined-in\" rel=\"{owner}\">{owner}</span></tpl>",
+                                                        "<br/>",
+                                                    "</div>",
+                                                    "<a href=\"#!/procedure/{parent.name}-constructor-{id}\" class=\"name expandable\">NEW {name}</a>( ",
+                                                        "<tpl for=\"parameters\">",
+                                                            "<tpl if=\"xindex!==1\">, </tpl>{mode} {name}",
+                                                        "</tpl>",
+                                                    " )",
+                                                    "<span class=\"signature\">",
+                                                        "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
+                                                        "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                        "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                        "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                        "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                        "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
+                                                    "</span>",
+                                                "</div>",
+                                                "<div class=\"description\">",
+                                                    "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                    "<div class=\"long\">",
+                                                        "<tpl if=\"meta.internal\">",
+                                                            "<div class=\"rounded-box private-box\">",
+                                                                "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "<tpl if=\"meta.deprecated\">",
+                                                            "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
+                                                                "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
+                                                                "{meta.deprecated.text}",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "{comment}",
+                                                    "</div>",
+                                                "</div>",
+                                            "</div>",
+
+                                        "</tpl>",
+                                    "</tpl>",
+                                "</div>",
+                            "</div>",
+                        "</tpl>",
+
+                        "<tpl if=\"this.hasMember(members, 'property')\">",
+                            "<div class=\"members-section\">",
+                                "<h3 class=\"members-title icon-property\">Properties</h3>",
+                                "<div class=\"subsection\">",
+                                    "<tpl for=\"members\">",
+                                        "<tpl if=\"tagname == 'property'\">",
+
+                                            "<div id=\"{id}\" class=\"member <tpl if=\"xindex===1\">first-child</tpl> <tpl if=\"parent.name == owner\">not-inherited<tpl else>inherited</tpl>\">",
+                                                "<a href=\"#\" class=\"side expandable\">",
+                                                    "<span>&nbsp;</span>",
+                                                "</a>",
+                                                "<div class=\"title\">",
+                                                    "<div class=\"meta\">",
+                                                        "<tpl if=\"parent.name != owner\"><a href=\"#!/class/{owner}\" rel=\"{owner}\" class=\"defined-in docClass\">{owner}</a>",
+                                                        "<tpl else><span class=\"defined-in\" rel=\"{owner}\">{owner}</span></tpl>",
+                                                        "<br/>",
+                                                    "</div>",
+                                                    "<a href=\"#!/class/{parent.name}-property-{id}\" class=\"name expandable\">{name}</a> : {datatype}",
+                                                    "<span class=\"signature\">",
+                                                        "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
+                                                        "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                        "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                        "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                        "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                        "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
+                                                    "</span>",
+                                                "</div>",
+                                                "<div class=\"description\">",
+                                                    "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                    "<div class=\"long\">",
+                                                        "<tpl if=\"meta.internal\">",
+                                                            "<div class=\"rounded-box private-box\">",
+                                                                "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "<tpl if=\"meta.deprecated\">",
+                                                            "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
+                                                                "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
+                                                                "{meta.deprecated.text}",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "{comment}",
+                                                    "</div>",
+                                                "</div>",
+                                            "</div>",
+
+                                        "</tpl>",
+                                    "</tpl>",
+                                "</div>",
+                            "</div>",
+                        "</tpl>",
+
+                        "<tpl if=\"this.hasMember(members, 'method')\">",
+                            "<div class=\"members-section\">",
+                                "<h3 class=\"members-title icon-method\">Methods</h3>",
+                                "<div class=\"subsection\">",
+
+                                    "<tpl for=\"members\">",
+                                        "<tpl if=\"tagname == 'method'\">",
+                                            "<div id=\"{id}\" class=\"member <tpl if=\"xindex===1\"> first-child</tpl>\">",
+                                                "<a href=\"#\" class=\"side expandable\"><span>&nbsp;</span></a>",
+                                                "<div class=\"title\">",
+                                                    "<div class=\"meta\">",
+                                                        "<tpl if=\"parent.name != owner\"><a href=\"#!/class/{owner}\" rel=\"{owner}\" class=\"defined-in docClass\">{owner}</a>",
+                                                        "<tpl else><span class=\"defined-in\" rel=\"{owner}\">{owner}</span></tpl>",
+                                                        "<br/>",
+                                                    "</div>",
+                                                    "<a href=\"#!/class/{parent.name}-method-{id}\" class=\"name expandable\">{name}</a>( ",
+                                                        "<tpl for=\"parameters\">",
+                                                            "<tpl if=\"xindex!==1\">, </tpl>{mode} {name}",
+                                                        "</tpl>",
+                                                    " ) : {[this.datatypeLink(values.returns.datatype)]}",
+                                                    "<span class=\"signature\">",
+                                                        "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
+                                                        "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                        "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
+                                                    "</span>",
+                                                "</div>",
+
+                                                "<div class=\"description\">",
+                                                    "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                    "<div class=\"long\">",
+                                                        "<tpl if=\"meta.internal\">",
+                                                            "<div class=\"rounded-box private-box\">",
+                                                                "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "<tpl if=\"meta.deprecated\">",
+                                                            "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
+                                                                "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
+                                                                "{meta.deprecated.text}",
+                                                            "</div>",
+                                                            "</br>",
+                                                        "</tpl>",
+                                                        "{comment}",
+
+                                                        "<br>",
+                                                        "<tpl if=\"parameters\">",
+                                                            "<h3 class=\"pa\">Parameters</h3>",
+                                                            "<ul>",
+                                                                "<tpl for=\"parameters\">",
+                                                                    "<li>",
+                                                                        "<span class=\"pre\">{mode} {name} : {[this.datatypeLink(values.datatype)]}</span>",
+                                                                        "<div class=\"sub-desc\">",
+                                                                            "{comment}",
+                                                                        "</div>",
+                                                                    "</li>",
+                                                                "</tpl>",
+                                                            "</ul>",
+                                                            
+                                                        "</tpl>",
+                                                        "<h3 class=\"pa\">Returns</h3>",
+                                                        "<ul>",
+                                                            "<li>",
+                                                                "<span class=\"pre\">{[this.datatypeLink(values.returns.datatype)]}</span>",
+                                                                "<div class=\"sub-desc\">",
+                                                                    "{returns.comment}",
+                                                                "</div>",
+                                                            "</li>",
+                                                        "</ul>",
+                                                    "</div>",
+                                                "</div>",
+                                            "</div>",
+                                        "</tpl>",
+                                    "</tpl>",
+
+                                "</div>",
+                            "</div>",
+                        "</tpl>",
+
+                    "</div>",
+                "</div>",
+            "</div>",
+            {
+                hasMember: function(members, tagname) {
+                    var foundMember = false;
+                    Ext.Array.forEach(members, function(member) {
+                        if (member.tagname == tagname) {
+                            foundMember = true;
+                            return;
+                        }
+                    }, this);
+                    return foundMember;
+                },
+
+                getShortDoc: function(comment) {
+                    // TODO: strip html tags properly
+                    return comment.replace(/<.*?>/g, '').substring(0, 100);
+                },
+
+                datatypeLink: function(datatype) {
+
+                    if (Docs.data.classLinkCache[datatype]) {
+                        console.log('cache hit');
+                        return Docs.data.classLinkCache[datatype];
+                    }
+
+                    for (var i = 0; i < Docs.data.classes.length; i++) {
+                        var lookupClass = Docs.data.classes[i];
+                        if (lookupClass.name == datatype) {
+                            Docs.data.classLinkCache[datatype] = "<a href=\"#!/class/" + datatype + "\" rel=\"" + datatype + "\" class=\"docClass\">" + datatype + "</a>";
+                            return Docs.data.classLinkCache[datatype];
+                        }
+                    }
+
+                    return datatype;
+                }
+            }
+        );
+    
+        this.update(tpl.apply(docClass));
 
         Docs.Syntax.highlight(this.getEl());
 
         this.filterMembers("", Docs.Settings.get("show"));
 
-        if (Docs.Comments.isEnabled()) {
-            this.initComments();
-        }
-        else {
-            this.initBasicMemberWrappers();
-        }
-
+        
+        this.initBasicMemberWrappers();
+        
         this.fireEvent('afterload');
-    },
-
-    initComments: function() {
-        // Add comment button to toolbar
-        this.toolbar.showCommentCount();
-        this.toolbar.setCommentCount(Docs.Comments.getCount(["class", this.docClass.name, ""]));
-
-        // Insert class level comment container under class intro docs
-        this.clsExpander = new Docs.view.comments.LargeExpander({
-            name: this.docClass.name,
-            el: Ext.query('.doc-contents')[0]
-        });
-
-        // Add a comment container to each class member
-        this.memberWrappers = {};
-        Ext.Array.forEach(Ext.query('.member'), function(memberEl) {
-            var wrap = new Docs.view.comments.MemberWrap({
-                parent: this,
-                className: this.docClass.name,
-                el: memberEl
-            });
-            this.memberWrappers[wrap.getMemberId()] = wrap;
-        }, this);
     },
 
     initBasicMemberWrappers: function() {
@@ -147,32 +377,6 @@ Ext.define('Docs.view.cls.Overview', {
             });
             this.memberWrappers[wrap.getMemberId()] = wrap;
         }, this);
-    },
-
-    /**
-     * Updates comment counts of the class itself and of all its members.
-     */
-    updateCommentCounts: function() {
-        // do nothing when no class loaded
-        if (!this.docClass) {
-            return;
-        }
-
-        var clsCount = Docs.Comments.getCount(["class", this.docClass.name, ""]);
-        this.toolbar.setCommentCount(clsCount);
-
-        this.clsExpander.getExpander().setCount(clsCount);
-
-        Ext.Object.each(this.memberWrappers, function(name, wrap) {
-            wrap.setCount(Docs.Comments.getCount(wrap.getTarget()));
-        }, this);
-    },
-
-    expandClassComments: function() {
-        var expander = this.clsExpander.getExpander();
-        expander.expand();
-        // add a small arbitrary -40 offset to make the header visible.
-        this.scrollToEl(expander.getEl(), -40);
     },
 
     /**
@@ -197,15 +401,6 @@ Ext.define('Docs.view.cls.Overview', {
      * Expands/collapses all members.
      */
     setAllMembersExpanded: function(expanded) {
-        // When comments enabled, then first initialize all the
-        // expanders to make the next actual expanding phase much
-        // faster.
-        if (Docs.Comments.isEnabled()) {
-            Ext.Object.each(this.memberWrappers, function(name, wrap) {
-                wrap.getExpander().show();
-            }, this);
-        }
-
         Ext.Object.each(this.memberWrappers, function(name, wrap) {
             wrap.setExpanded(expanded);
         }, this);
@@ -240,13 +435,14 @@ Ext.define('Docs.view.cls.Overview', {
                 !show['internal'] && m.meta['internal'] ||
                 isSearch           && !re.test(m.name)
             );
-
+/* TODO: Remove this
             if (visible) {
                 el.setStyle({display: 'block'});
             }
             else {
                 el.setStyle({display: 'none'});
             }
+            */
         }, this);
 
         // Remove all first-child classes

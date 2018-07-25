@@ -17,9 +17,6 @@ Ext.define("Docs.Settings", {
             "internal": false,
             "inherited": true
         },
-        comments: {
-            hideRead: false
-        },
         showPrivateClasses: false,
         classTreeLogic: "PackageLogic"
     },

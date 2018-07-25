@@ -30,7 +30,7 @@ Ext.define('Docs.view.cls.Header', {
                 '{[this.renderMetaTags(values.meta)]}',
             '</h1>',
             '<tpl if="Docs.data.showPrintButton">',
-                '<a class="print" href="?print=/api/{name}" target="_blank">Print</a>',
+                '<a class="print" href="?print=/class/{name}" target="_blank">Print</a>',
             '</tpl>',
             {
                 renderAliases: function(aliases) {

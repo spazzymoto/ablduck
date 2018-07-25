@@ -36,9 +36,6 @@ Ext.override(Ext.dom.Element, {
 Ext.define('Docs.view.ThumbList', {
     extend: 'Ext.view.View',
     alias: 'widget.thumblist',
-    requires: [
-        'Docs.Comments'
-    ],
 
     cls: 'thumb-list',
     itemSelector: 'dl',
@@ -48,13 +45,6 @@ Ext.define('Docs.view.ThumbList', {
      * Name of the model field from which to read the URL for urlclick event.
      */
     urlField: 'url',
-
-    /**
-     * @cfg
-     * The type to use for retrieving comment counts.
-     * Should be either "guide" or "video".
-     */
-    commentType: "",
 
     /**
      * @cfg {String[]} itemTpl
@@ -116,13 +106,9 @@ Ext.define('Docs.view.ThumbList', {
         this.data = undefined;
 
         // Listen to viewready because the whole HTML is not yet
-        // rendered when afterrender fires - and initComments relies
-        // on the view being rendered fully.
+        // rendered when afterrender fires
         this.on("viewready", function() {
             this.initHover();
-            if (Docs.Comments.isEnabled()) {
-                this.initComments();
-            }
         }, this);
 
         this.callParent(arguments);
@@ -140,28 +126,6 @@ Ext.define('Docs.view.ThumbList', {
         }, this, {
             delegate: 'dd'
         });
-    },
-
-    initComments: function() {
-        this.getEl().select("dd").each(function(dd) {
-            var name = dd.getAttributeNS("ext", this.urlField).replace(/^.*\//, "");
-            var count = Docs.Comments.getCount([this.commentType, name, ""]);
-            if (count) {
-                Ext.DomHelper.append(dd.down("p"), Docs.Comments.counterHtml(count));
-            }
-        }, this);
-    },
-
-    /**
-     * Refreshes the comment counters.
-     */
-    updateCommentCounts: function() {
-        if (!this.getEl()) {
-            return;
-        }
-
-        this.getEl().select(".comment-counter-small").remove();
-        this.initComments();
     },
 
     // Given groups data with subgroups like this:

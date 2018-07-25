@@ -3,7 +3,7 @@
  */
 Ext.define('Docs.controller.Classes', {
     extend: 'Docs.controller.Content',
-    baseUrl: '#!/api',
+    baseUrl: '#!/class',
     title: 'API Documentation',
 
     requires: [
@@ -170,11 +170,15 @@ Ext.define('Docs.controller.Classes', {
     // We don't want to select the class that was opened in another window,
     // so restore the previous selection.
     handleUrlClick: function(url, event, view) {
+        // If not for me bail
+        if (!(/#!?\/class/.test(url))) 
+            return false;
+
         url = Docs.History.cleanUrl(url);
 
         if (this.opensNewWindow(event)) {
             window.open(url);
-            view && view.selectUrl(this.currentCls ? "#!/api/"+this.currentCls.name : "");
+            view && view.selectUrl(this.currentCls ? "#!/class/"+this.currentCls.name : "");
         }
         else {
             this.loadClass(url);
@@ -205,7 +209,7 @@ Ext.define('Docs.controller.Classes', {
         noHistory || Docs.History.push(url);
 
         // separate class and member name
-        var matches = url.match(/^#!\/api\/(.*?)(?:-(.*))?$/);
+        var matches = url.match(/^#!\/class\/(.*?)(?:-(.*))?$/);
         var cls = Docs.ClassRegistry.canonicalName(matches[1]);
         var member = matches[2];
 
@@ -219,7 +223,7 @@ Ext.define('Docs.controller.Classes', {
         else {
             this.cache[cls] = "in-progress";
             Ext.data.JsonP.request({
-                url: this.getBaseUrl() + '/output/' + cls + '.js',
+                url: this.getBaseUrl() + '/output/classes/' + cls + '.js',
                 callbackName: cls.replace(/\./g, '_'),
                 success: function(json, opts) {
                     this.cache[cls] = json;
@@ -252,7 +256,7 @@ Ext.define('Docs.controller.Classes', {
             reRendered = true;
         }
         this.currentCls = cls;
-        this.getOverview().setScrollContext("#!/api/"+cls.name);
+        this.getOverview().setScrollContext("#!/class/"+cls.name);
 
         if (anchor) {
             this.getOverview().scrollToEl("#" + anchor);
@@ -262,7 +266,7 @@ Ext.define('Docs.controller.Classes', {
             this.getOverview().restoreScrollState();
         }
 
-        this.getTree().selectUrl("#!/api/"+cls.name);
+        this.getTree().selectUrl("#!/class/"+cls.name);
         this.fireEvent('showClass', cls.name, {reRendered: reRendered});
     }
 

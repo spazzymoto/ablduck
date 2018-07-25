@@ -10,6 +10,7 @@ Ext.define('Docs.view.Tabs', {
     requires: [
         'Docs.History',
         'Docs.ClassRegistry',
+        'Docs.ProcedureRegistry',
         'Docs.view.TabMenu'
     ],
 
@@ -199,9 +200,14 @@ Ext.define('Docs.view.Tabs', {
     // text be the same as tab title - useful for seeing the full
     // title for tabs with long titles.
     formatTabTexts: function(tab) {
-        if (/#!?\/api\//.test(tab.href)) {
-            var fullClsName = tab.href.replace(/^.*#!?\/api\//, "");
+        if (/#!?\/class\//.test(tab.href)) {
+            var fullClsName = tab.href.replace(/^.*#!?\/class\//, "");
             tab.text = Docs.ClassRegistry.shortName(fullClsName);
+            tab.tooltip = fullClsName;
+        }
+        else if (/#!?\/procedure\//.test(tab.href)) {
+            var fullClsName = tab.href.replace(/^.*#!?\/procedure\//, "");
+            tab.text = Docs.ProcedureRegistry.shortName(fullClsName);
             tab.tooltip = fullClsName;
         }
         else {
@@ -293,7 +299,7 @@ Ext.define('Docs.view.Tabs', {
             var docTab = Ext.get(activeTab).up('.doctab');
             docTab.addCls('active');
         }
-
+        
         this.highlightOverviewTab(url);
     },
 
@@ -458,6 +464,7 @@ Ext.define('Docs.view.Tabs', {
      */
     highlightOverviewTab: function(url) {
         var overviewTab = Ext.query('.doctab.' + this.getControllerName(url).toLowerCase());
+
         if (overviewTab && overviewTab[0]) {
             Ext.get(overviewTab[0]).addCls('highlight');
         }
@@ -607,8 +614,11 @@ Ext.define('Docs.view.Tabs', {
      * Determines controller name from a URL
      */
     getControllerName: function(url) {
-        if (/#!?\/api/.test(url)) {
+        if (/#!?\/class/.test(url)) {
             return 'Classes';
+        }
+        if (/#!?\/procedure/.test(url)) {
+            return 'Procedures';
         }
         else if (/#!?\/guide/.test(url)) {
             return 'Guides';
@@ -621,9 +631,6 @@ Ext.define('Docs.view.Tabs', {
         }
         else if (/#!?\/tests/.test(url)) {
             return 'Tests';
-        }
-        else if (/#!?\/comment/.test(url)) {
-            return 'Comments';
         }
         else {
             return 'Index';

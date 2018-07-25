@@ -157,10 +157,7 @@ Ext.define('Docs.view.examples.Inline', {
         var previewHeight = this.preview.getHeight();
         var editorHeight = this.editor.getHeight();
         var toolbarHeight = 30;
-        if (Docs.data.touchExamplesUi && previewHeight > 0) {
-            this.setHeight(previewHeight+toolbarHeight);
-        }
-        else if (editorHeight > 0) {
+        if (editorHeight > 0) {
             this.setHeight(Ext.Number.constrain(editorHeight+toolbarHeight, 0, this.maxCodeHeight));
         }
     }

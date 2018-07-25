@@ -66,23 +66,13 @@ Ext.define('Docs.view.examples.InlinePreview', {
     },
 
     getHtml: function() {
-        if (Docs.data.touchExamplesUi) {
-            return Ext.create('Docs.view.examples.Device', {
-                url: "eg-iframe.html",
-                id: this.iframeId,
-                device: this.options.device,
-                orientation: this.options.orientation
-            }).toHtml();
-        }
-        else {
-            // frameBorder=0 is needed to hide the border in IE8
-            var tpl = new Ext.XTemplate(
-                '<iframe id="{id}" style="width: 100%; height: 100%; border: 0" frameBorder="0"></iframe>'
-            );
-            return tpl.apply({
-                id: this.iframeId
-            });
-        }
+        // frameBorder=0 is needed to hide the border in IE8
+        var tpl = new Ext.XTemplate(
+            '<iframe id="{id}" style="width: 100%; height: 100%; border: 0" frameBorder="0"></iframe>'
+        );
+        return tpl.apply({
+            id: this.iframeId
+        });
     },
 
     /**

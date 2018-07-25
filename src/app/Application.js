@@ -9,51 +9,40 @@ Ext.define('Docs.Application', {
     requires: [
         'Ext.app.Application',
         'Docs.History',
-        'Docs.Comments',
         'Docs.Settings',
         'Docs.view.Viewport',
 
-        'Docs.controller.Auth',
         'Docs.controller.Welcome',
         'Docs.controller.Failure',
         'Docs.controller.Classes',
+        'Docs.controller.Procedures',
         'Docs.controller.Search',
         'Docs.controller.InlineExamples',
         'Docs.controller.Examples',
         'Docs.controller.Guides',
         'Docs.controller.Videos',
         'Docs.controller.Tabs',
-        'Docs.controller.Comments',
-        'Docs.controller.CommentCounts',
         'Docs.controller.Tests'
     ],
 
     constructor: function() {
-        // Initialize the comments system before anything else.
-        //
-        // This way all the controllers and views can rely on the
-        // basic comments data being already loaded and they don't
-        // need to set up additional listeners and callback to wait
-        // for it being loaded.
-        Docs.Comments.init(this.createApp, this);
+        this.createApp();
     },
 
     createApp: function() {
         new Ext.app.Application({
             name: "Docs",
             controllers: [
-                'Auth',
                 'Welcome',
                 'Failure',
                 'Classes',
+                'Procedures',
                 'Search',
                 'InlineExamples',
                 'Examples',
                 'Guides',
                 'Videos',
                 'Tabs',
-                'Comments',
-                'CommentCounts',
                 'Tests'
             ],
             launch: this.launch
