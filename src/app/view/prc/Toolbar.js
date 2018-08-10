@@ -85,7 +85,7 @@ Ext.define('Docs.view.prc.Toolbar', {
                 triggerCls: 'reset',
                 cls: 'member-filter',
                 hideTrigger: true,
-                emptyText: 'Filter class members',
+                emptyText: 'Filter procedure members',
                 enableKeyEvents: true,
                 width: 150,
                 listeners: {

@@ -135,6 +135,21 @@
 .members .comments-section .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
 .class-overview .x-toolbar.member-links .icon-function { background-image: url(member-icons/function.png); background-repeat: no-repeat; }
 
+#search-dropdown .icon-temptable { background-image: url(member-icons/temptable.png); background-repeat: no-repeat; }
+.members .members-section .icon-temptable { background-image: url(member-icons/temptable.png); background-repeat: no-repeat; }
+.members .comments-section .icon-temptable { background-image: url(member-icons/temptable.png); background-repeat: no-repeat; }
+.class-overview .x-toolbar.member-links .icon-temptable { background-image: url(member-icons/temptable.png); background-repeat: no-repeat; }
+
+#search-dropdown .icon-dataset { background-image: url(member-icons/dataset.png); background-repeat: no-repeat; }
+.members .members-section .icon-dataset { background-image: url(member-icons/dataset.png); background-repeat: no-repeat; }
+.members .comments-section .icon-dataset { background-image: url(member-icons/dataset.png); background-repeat: no-repeat; }
+.class-overview .x-toolbar.member-links .icon-dataset { background-image: url(member-icons/dataset.png); background-repeat: no-repeat; }
+
+#search-dropdown .icon-destructor { background-image: url(member-icons/destructor.png); background-repeat: no-repeat; }
+.members .members-section .icon-destructor { background-image: url(member-icons/destructor.png); background-repeat: no-repeat; }
+.members .comments-section .icon-destructor { background-image: url(member-icons/destructor.png); background-repeat: no-repeat; }
+.class-overview .x-toolbar.member-links .icon-destructor { background-image: url(member-icons/destructor.png); background-repeat: no-repeat; }
+
 
 .private-box p, .deprecated-box p {
   max-width: none !important;
