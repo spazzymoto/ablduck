@@ -102,6 +102,13 @@ Ext.define('Docs.view.cls.Overview', {
         var tpl = new Ext.XTemplate(
             "<div>",
                 "<pre class=\"hierarchy\">",
+                    "<tpl for=\"uses\">",
+                        "<tpl if=\"xindex===1\"><h4>Uses</h4></tpl>",
+                        "<div class=\"dependency\">",
+                            '{[ values[values.length - 1] == "*" ? "<strong>" + values + "</strong>" : "<a href=\'#!/class/" + values + "\' rel=\'" + values + "\' class=\'docClass\'>" + values + "</a>" ]}',
+                        "</div>",
+                    "</tpl>",
+                    
                     "<tpl for=\"superclasses\">",
                         "<tpl if=\"xindex===1\"><h4>Hierarchy</h4></tpl>",
                         '<div class="subclass<tpl if="xindex===1"> first-child</tpl>" style="{[ xindex > 1 ? \"margin-left:\" + (15 + (12 * (xindex-2))) + \"px; \" : "" ]}list-style: none;">',
@@ -178,11 +185,11 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "</tpl>",
                                                 " )",
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
                                                     "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
                                                     "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
-                                                    "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                    "<tpl if=\"meta.super\"><span class=\"super\">SUPER</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
                                                 "</span>",
                                             "</div>",
@@ -267,8 +274,12 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "</tpl>",
                                                 " ) : {[this.datatypeLink(values.returns.datatype)]}",
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                    "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                    "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                    "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                    "<tpl if=\"meta.override\"><span class=\"override\">OVERRIDE</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
                                                 "</span>",
                                             "</div>",
@@ -344,11 +355,12 @@ Ext.define('Docs.view.cls.Overview', {
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-property-{id}\" class=\"name expandable\">{name}</a> : {datatype}",
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
                                                     "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
                                                     "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
                                                     "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                    "<tpl if=\"meta.override\"><span class=\"override\">OVERRIDE</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
                                                 "</span>",
                                             "</div>",
@@ -400,8 +412,13 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "</tpl>",
                                                 " ) : {[this.datatypeLink(values.returns.datatype)]}",
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                    "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                    "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                    "<tpl if=\"meta.abstract\"><span class=\"abstract\">ABSTRACT</span></tpl>",
+                                                    "<tpl if=\"meta.override\"><span class=\"override\">OVERRIDE</span></tpl>",
+                                                    "<tpl if=\"meta.final\"><span class=\"final\">FINAL</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
                                                 "</span>",
                                             "</div>",
@@ -474,18 +491,22 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "<br/>",
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-temptable-{id}\" class=\"name expandable\">{name}</a>",
-                                                /* TODO: tt Sigature
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                    "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                    "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                    "<tpl if=\"meta.new\"><span class=\"new\">NEW</span></tpl>",
+                                                    "<tpl if=\"meta.global\"><span class=\"global\">GLOBAL</span></tpl>",
+                                                    "<tpl if=\"meta.shared\"><span class=\"shared\">SHARED</span></tpl>",
+                                                    "<tpl if=\"meta.noundo\"><span class=\"noundo\">NO-UNDO</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
-                                                "</span>", */
+                                                "</span>", 
                                             "</div>",
 
                                             "<div class=\"description\">",
                                                 "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
                                                 "<div class=\"long\">",
-                                                    /* TODO: tt Sigature
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
                                                             "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
@@ -499,7 +520,6 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    */
                                                     "{comment}",
 
                                                     "<br>",
@@ -532,18 +552,20 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "<br/>",
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-temptable-{id}\" class=\"name expandable\">{name}</a>",
-                                                /* TODO: tt Sigature
                                                 "<span class=\"signature\">",
-                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
+                                                    "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
+                                                    "<tpl if=\"meta.static\"><span class=\"static\">STATIC</span></tpl>",
+                                                    "<tpl if=\"meta.new\"><span class=\"new\">NEW</span></tpl>",
+                                                    "<tpl if=\"meta.shared\"><span class=\"shared\">SHARED</span></tpl>",
+                                                    "<tpl if=\"meta.internal\"><span class=\"internal\">INTERNAL</span></tpl>",
                                                     "<tpl if=\"meta.deprecated\"><span class=\"deprecated\">DEPRECATED</span></tpl>",
-                                                "</span>", */
+                                                "</span>", 
                                             "</div>",
 
                                             "<div class=\"description\">",
                                                 "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
                                                 "<div class=\"long\">",
-                                                    /* TODO: tt Sigature
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
                                                             "<p><strong>NOTE:</strong>This {tagname} is for internal use only. Don't rely on its existence.</p>",
@@ -557,7 +579,6 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    */
                                                     "{comment}",
 
                                                     "<br>",
@@ -586,6 +607,7 @@ Ext.define('Docs.view.cls.Overview', {
                             return;
                         }
                     }, this);
+
                     return foundMember;
                 },
 
