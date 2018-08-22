@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipservicehelper({"files":[],"uses":[],"id":"class-mip.cls.basemipservicehelper","tagname":"class","name":"mip.cls.basemipservicehelper","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipservicehelper"],"subclasses":[],"implements":[],"members":[],"meta":{}});

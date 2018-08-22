@@ -1,0 +1,1 @@
+Ext.data.JsonP.ws_cls_basemipwarpspeed({"files":[],"uses":[],"id":"class-ws.cls.basemipwarpspeed","tagname":"class","name":"ws.cls.basemipwarpspeed","extends":"","author":"","comment":"","icon":"class","superclasses":["ws.cls.basemipwarpspeed"],"subclasses":[],"implements":[],"members":[],"meta":{}});

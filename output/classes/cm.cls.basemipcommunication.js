@@ -1,0 +1,1 @@
+Ext.data.JsonP.cm_cls_basemipcommunication({"files":[],"uses":[],"id":"class-cm.cls.basemipcommunication","tagname":"class","name":"cm.cls.basemipcommunication","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipcommunication"],"subclasses":[],"implements":[],"members":[],"meta":{}});

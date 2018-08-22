@@ -1,0 +1,47 @@
+.rounded-box {
+
+    border: 1px solid #999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 50px;
+
+}
+
+.deprecated-box {
+  border: 2px solid #aa0000;
+}
+.deprecated-box strong {
+  color: white;
+  background-color: #aa0000;
+}
+  .deprecated-tag-box {
+    text-align: center;
+    color: #600;
+    background-color: #fee;
+  }
+  .deprecated-tag-box strong {
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 3px 3px 0;
+  }
+
+  .private-box {
+          background-color: #fee;
+          text-align: center;
+          color: #600;
+          margin-bottom: 1em;
+        }
+
+.private-box p, .deprecated-box p {
+  max-width: none !important;
+}
+
+@import "viewport";
+
+
+
+
+

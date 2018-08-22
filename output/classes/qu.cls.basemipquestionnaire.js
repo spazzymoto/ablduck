@@ -1,0 +1,1 @@
+Ext.data.JsonP.qu_cls_basemipquestionnaire({"files":[],"uses":[],"id":"class-qu.cls.basemipquestionnaire","tagname":"class","name":"qu.cls.basemipquestionnaire","extends":"","author":"","comment":"","icon":"class","superclasses":["qu.cls.basemipquestionnaire"],"subclasses":[],"implements":[],"members":[],"meta":{}});

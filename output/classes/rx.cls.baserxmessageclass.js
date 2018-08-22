@@ -1,0 +1,1 @@
+Ext.data.JsonP.rx_cls_baserxmessageclass({"files":[],"uses":[],"id":"class-rx.cls.baserxmessageclass","tagname":"class","name":"rx.cls.baserxmessageclass","extends":"","author":"","comment":"","icon":"class","superclasses":["rx.cls.baserxmessageclass"],"subclasses":[],"implements":[],"members":[],"meta":{}});

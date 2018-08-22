@@ -1,0 +1,1 @@
+Ext.data.JsonP.cm_cls_basemipcmmessage({"files":[],"uses":[],"id":"class-cm.cls.basemipcmmessage","tagname":"class","name":"cm.cls.basemipcmmessage","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipcmmessage"],"subclasses":[],"implements":[],"members":[],"meta":{}});

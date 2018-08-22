@@ -1,0 +1,1 @@
+Ext.data.JsonP.cm_cls_basemipcmsearch({"files":[],"uses":[],"id":"class-cm.cls.basemipcmsearch","tagname":"class","name":"cm.cls.basemipcmsearch","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipcmsearch"],"subclasses":[],"implements":[],"members":[],"meta":{}});

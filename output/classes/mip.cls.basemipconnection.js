@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipconnection({"files":[],"uses":[],"id":"class-mip.cls.basemipconnection","tagname":"class","name":"mip.cls.basemipconnection","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipconnection"],"subclasses":[],"implements":[],"members":[],"meta":{}});

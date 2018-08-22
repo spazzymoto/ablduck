@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipappobject({"files":[],"uses":[],"id":"class-mip.cls.basemipappobject","tagname":"class","name":"mip.cls.basemipappobject","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipappobject"],"subclasses":[],"implements":[],"members":[],"meta":{}});

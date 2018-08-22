@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipsyntaxparser({"files":[],"uses":[],"id":"class-mip.cls.basemipsyntaxparser","tagname":"class","name":"mip.cls.basemipsyntaxparser","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipsyntaxparser"],"subclasses":[],"implements":[],"members":[],"meta":{}});

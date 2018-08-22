@@ -1,0 +1,1 @@
+Ext.data.JsonP.rx_cls_basemiprxdocument({"files":[],"uses":[],"id":"class-rx.cls.basemiprxdocument","tagname":"class","name":"rx.cls.basemiprxdocument","extends":"","author":"","comment":"","icon":"class","superclasses":["rx.cls.basemiprxdocument"],"subclasses":[],"implements":[],"members":[],"meta":{}});

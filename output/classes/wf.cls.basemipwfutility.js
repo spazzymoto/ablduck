@@ -1,0 +1,1 @@
+Ext.data.JsonP.wf_cls_basemipwfutility({"files":[],"uses":[],"id":"class-wf.cls.basemipwfutility","tagname":"class","name":"wf.cls.basemipwfutility","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipwfutility"],"subclasses":[],"implements":[],"members":[],"meta":{}});

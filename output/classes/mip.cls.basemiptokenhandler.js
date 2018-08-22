@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemiptokenhandler({"files":[],"uses":[],"id":"class-mip.cls.basemiptokenhandler","tagname":"class","name":"mip.cls.basemiptokenhandler","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemiptokenhandler"],"subclasses":[],"implements":[],"members":[],"meta":{}});

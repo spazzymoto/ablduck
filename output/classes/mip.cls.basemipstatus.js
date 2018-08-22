@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipstatus({"files":[],"uses":[],"id":"class-mip.cls.basemipstatus","tagname":"class","name":"mip.cls.basemipstatus","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipstatus"],"subclasses":[],"implements":[],"members":[],"meta":{}});

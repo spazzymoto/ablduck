@@ -1,0 +1,1 @@
+Ext.data.JsonP.er_cls_basemiperorganisationdataservice({"files":[],"uses":[],"id":"class-er.cls.basemiperorganisationdataservice","tagname":"class","name":"er.cls.basemiperorganisationdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemiperorganisationdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

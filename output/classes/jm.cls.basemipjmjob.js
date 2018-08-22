@@ -1,0 +1,1 @@
+Ext.data.JsonP.jm_cls_basemipjmjob({"files":[],"uses":[],"id":"class-jm.cls.basemipjmjob","tagname":"class","name":"jm.cls.basemipjmjob","extends":"","author":"","comment":"","icon":"class","superclasses":["jm.cls.basemipjmjob"],"subclasses":[],"implements":[],"members":[],"meta":{}});

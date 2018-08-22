@@ -1,0 +1,1 @@
+Ext.data.JsonP.gm_cls_basemipgmbehaviour({"files":[],"uses":[],"id":"class-gm.cls.basemipgmbehaviour","tagname":"class","name":"gm.cls.basemipgmbehaviour","extends":"","author":"","comment":"","icon":"class","superclasses":["gm.cls.basemipgmbehaviour"],"subclasses":[],"implements":[],"members":[],"meta":{}});

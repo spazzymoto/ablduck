@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipacronym({"files":[],"uses":[],"id":"class-mip.cls.basemipacronym","tagname":"class","name":"mip.cls.basemipacronym","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipacronym"],"subclasses":[],"implements":[],"members":[],"meta":{}});

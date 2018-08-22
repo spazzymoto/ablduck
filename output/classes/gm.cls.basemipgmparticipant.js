@@ -1,0 +1,1 @@
+Ext.data.JsonP.gm_cls_basemipgmparticipant({"files":[],"uses":[],"id":"class-gm.cls.basemipgmparticipant","tagname":"class","name":"gm.cls.basemipgmparticipant","extends":"","author":"","comment":"","icon":"class","superclasses":["gm.cls.basemipgmparticipant"],"subclasses":[],"implements":[],"members":[],"meta":{}});

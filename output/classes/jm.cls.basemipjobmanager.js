@@ -1,0 +1,1 @@
+Ext.data.JsonP.jm_cls_basemipjobmanager({"files":[],"uses":[],"id":"class-jm.cls.basemipjobmanager","tagname":"class","name":"jm.cls.basemipjobmanager","extends":"","author":"","comment":"","icon":"class","superclasses":["jm.cls.basemipjobmanager"],"subclasses":[],"implements":[],"members":[],"meta":{}});

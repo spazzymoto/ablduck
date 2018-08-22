@@ -1,0 +1,1 @@
+Ext.data.JsonP.ws_cls_basemipwsdashboard({"files":[],"uses":[],"id":"class-ws.cls.basemipwsdashboard","tagname":"class","name":"ws.cls.basemipwsdashboard","extends":"","author":"","comment":"","icon":"class","superclasses":["ws.cls.basemipwsdashboard"],"subclasses":[],"implements":[],"members":[],"meta":{}});

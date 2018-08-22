@@ -1,0 +1,1 @@
+Ext.data.JsonP.er_cls_basemipercontactdataservice({"files":[],"uses":[],"id":"class-er.cls.basemipercontactdataservice","tagname":"class","name":"er.cls.basemipercontactdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemipercontactdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

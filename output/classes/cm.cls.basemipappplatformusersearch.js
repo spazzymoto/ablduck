@@ -1,0 +1,1 @@
+Ext.data.JsonP.cm_cls_basemipappplatformusersearch({"files":[],"uses":[],"id":"class-cm.cls.basemipappplatformusersearch","tagname":"class","name":"cm.cls.basemipappplatformusersearch","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipappplatformusersearch"],"subclasses":[],"implements":[],"members":[],"meta":{}});

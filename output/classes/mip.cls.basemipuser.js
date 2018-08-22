@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipuser({"files":[],"uses":[],"id":"class-mip.cls.basemipuser","tagname":"class","name":"mip.cls.basemipuser","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipuser"],"subclasses":[],"implements":[],"members":[],"meta":{}});

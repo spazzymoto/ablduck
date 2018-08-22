@@ -1,0 +1,1 @@
+Ext.data.JsonP.mip_cls_basemipdataretrieval({"files":[],"uses":[],"id":"class-mip.cls.basemipdataretrieval","tagname":"class","name":"mip.cls.basemipdataretrieval","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipdataretrieval"],"subclasses":[],"implements":[],"members":[],"meta":{}});
