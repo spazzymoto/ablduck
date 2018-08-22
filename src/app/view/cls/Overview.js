@@ -353,7 +353,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                     "<tpl else><span class=\"defined-in\" rel=\"{owner}\">{owner}</span></tpl>",
                                                     "<br/>",
                                                 "</div>",
-                                                "<a href=\"#!/class/{parent.name}-property-{id}\" class=\"name expandable\">{name}</a> : {datatype}",
+                                                "<a href=\"#!/class/{parent.name}-property-{id}\" class=\"name expandable\">{name}</a> : {[this.datatypeLink(values.datatype)]}",
                                                 "<span class=\"signature\">",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
                                                     "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
