@@ -1,1 +1,0 @@
-Ext.data.JsonP.jm_cls_basemipjmschedule({"files":[],"uses":[],"id":"class-jm.cls.basemipjmschedule","tagname":"class","name":"jm.cls.basemipjmschedule","extends":"","author":"","comment":"","icon":"class","superclasses":["jm.cls.basemipjmschedule"],"subclasses":[],"implements":[],"members":[],"meta":{}});

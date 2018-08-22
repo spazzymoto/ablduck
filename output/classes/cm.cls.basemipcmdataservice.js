@@ -1,1 +1,0 @@
-Ext.data.JsonP.cm_cls_basemipcmdataservice({"files":[],"uses":[],"id":"class-cm.cls.basemipcmdataservice","tagname":"class","name":"cm.cls.basemipcmdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipcmdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.jm_cls_basemipjmdataservice({"files":[],"uses":[],"id":"class-jm.cls.basemipjmdataservice","tagname":"class","name":"jm.cls.basemipjmdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["jm.cls.basemipjmdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

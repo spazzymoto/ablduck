@@ -1,1 +1,0 @@
-Ext.data.JsonP.cm_cls_basemipnodataservice({"files":[],"uses":[],"id":"class-cm.cls.basemipnodataservice","tagname":"class","name":"cm.cls.basemipnodataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipnodataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

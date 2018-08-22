@@ -1,1 +1,0 @@
-Ext.data.JsonP.wf_cls_basemipwfdataservice({"files":[],"uses":[],"id":"class-wf.cls.basemipwfdataservice","tagname":"class","name":"wf.cls.basemipwfdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipwfdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

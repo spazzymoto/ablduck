@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemiprefvalues({"files":[],"uses":[],"id":"class-mip.cls.basemiprefvalues","tagname":"class","name":"mip.cls.basemiprefvalues","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemiprefvalues"],"subclasses":[],"implements":[],"members":[],"meta":{}});

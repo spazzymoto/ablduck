@@ -1,1 +1,0 @@
-Ext.data.JsonP.qu_cls_basemipquanswerfocusclass({"files":[],"uses":[],"id":"class-qu.cls.basemipquanswerfocusclass","tagname":"class","name":"qu.cls.basemipquanswerfocusclass","extends":"","author":"","comment":"","icon":"class","superclasses":["qu.cls.basemipquanswerfocusclass"],"subclasses":[],"implements":[],"members":[],"meta":{}});

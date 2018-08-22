@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipdsquerymapper({"files":[],"uses":[],"id":"class-mip.cls.basemipdsquerymapper","tagname":"class","name":"mip.cls.basemipdsquerymapper","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipdsquerymapper"],"subclasses":[],"implements":[],"members":[],"meta":{}});

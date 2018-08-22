@@ -1,1 +1,0 @@
-Ext.data.JsonP.er_cls_basemiperpersondataservice({"files":[],"uses":[],"id":"class-er.cls.basemiperpersondataservice","tagname":"class","name":"er.cls.basemiperpersondataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemiperpersondataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

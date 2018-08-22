@@ -1,1 +1,0 @@
-Ext.data.JsonP.wf_cls_basemipwfactivitylogclass({"files":[],"uses":[],"id":"class-wf.cls.basemipwfactivitylogclass","tagname":"class","name":"wf.cls.basemipwfactivitylogclass","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipwfactivitylogclass"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.er_cls_basemiperaddressdataservice({"files":[],"uses":[],"id":"class-er.cls.basemiperaddressdataservice","tagname":"class","name":"er.cls.basemiperaddressdataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemiperaddressdataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

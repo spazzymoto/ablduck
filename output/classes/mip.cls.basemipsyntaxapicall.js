@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipsyntaxapicall({"files":[],"uses":[],"id":"class-mip.cls.basemipsyntaxapicall","tagname":"class","name":"mip.cls.basemipsyntaxapicall","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipsyntaxapicall"],"subclasses":[],"implements":[],"members":[],"meta":{}});

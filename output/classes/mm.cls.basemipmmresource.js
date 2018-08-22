@@ -1,1 +1,0 @@
-Ext.data.JsonP.mm_cls_basemipmmresource({"files":[],"uses":[],"id":"class-mm.cls.basemipmmresource","tagname":"class","name":"mm.cls.basemipmmresource","extends":"","author":"","comment":"","icon":"class","superclasses":["mm.cls.basemipmmresource"],"subclasses":[],"implements":[],"members":[],"meta":{}});

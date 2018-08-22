@@ -1,1 +1,0 @@
-Ext.data.JsonP.ws_cls_basemipwsuiservice({"files":[],"uses":[],"id":"class-ws.cls.basemipwsuiservice","tagname":"class","name":"ws.cls.basemipwsuiservice","extends":"","author":"","comment":"","icon":"class","superclasses":["ws.cls.basemipwsuiservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.gm_cls_basemipgmchallenge({"files":[],"uses":[],"id":"class-gm.cls.basemipgmchallenge","tagname":"class","name":"gm.cls.basemipgmchallenge","extends":"","author":"","comment":"","icon":"class","superclasses":["gm.cls.basemipgmchallenge"],"subclasses":[],"implements":[],"members":[],"meta":{}});

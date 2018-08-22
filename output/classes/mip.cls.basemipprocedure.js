@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipprocedure({"files":[],"uses":[],"id":"class-mip.cls.basemipprocedure","tagname":"class","name":"mip.cls.basemipprocedure","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipprocedure"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.mm_cls_basemipmultimedia({"files":[],"uses":[],"id":"class-mm.cls.basemipmultimedia","tagname":"class","name":"mm.cls.basemipmultimedia","extends":"","author":"","comment":"","icon":"class","superclasses":["mm.cls.basemipmultimedia"],"subclasses":[],"implements":[],"members":[],"meta":{}});

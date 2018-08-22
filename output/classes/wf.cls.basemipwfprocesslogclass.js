@@ -1,1 +1,0 @@
-Ext.data.JsonP.wf_cls_basemipwfprocesslogclass({"files":[],"uses":[],"id":"class-wf.cls.basemipwfprocesslogclass","tagname":"class","name":"wf.cls.basemipwfprocesslogclass","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipwfprocesslogclass"],"subclasses":[],"implements":[],"members":[],"meta":{}});

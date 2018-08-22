@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipsession({"files":[],"uses":[],"id":"class-mip.cls.basemipsession","tagname":"class","name":"mip.cls.basemipsession","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipsession"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.wf_cls_basemipworkflow({"files":[],"uses":[],"id":"class-wf.cls.basemipworkflow","tagname":"class","name":"wf.cls.basemipworkflow","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipworkflow"],"subclasses":[],"implements":[],"members":[],"meta":{}});

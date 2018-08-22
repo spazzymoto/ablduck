@@ -1,1 +1,0 @@
-Ext.data.JsonP.gm_cls_basemipgmpoints({"files":[],"uses":[],"id":"class-gm.cls.basemipgmpoints","tagname":"class","name":"gm.cls.basemipgmpoints","extends":"","author":"","comment":"","icon":"class","superclasses":["gm.cls.basemipgmpoints"],"subclasses":[],"implements":[],"members":[],"meta":{}});

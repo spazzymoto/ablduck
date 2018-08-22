@@ -1,1 +1,0 @@
-Ext.data.JsonP.cc_cls_basemipcallcenter({"files":[],"uses":[],"id":"class-cc.cls.basemipcallcenter","tagname":"class","name":"cc.cls.basemipcallcenter","extends":"","author":"","comment":"","icon":"class","superclasses":["cc.cls.basemipcallcenter"],"subclasses":[],"implements":[],"members":[],"meta":{}});

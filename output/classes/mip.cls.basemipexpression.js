@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipexpression({"files":[],"uses":[],"id":"class-mip.cls.basemipexpression","tagname":"class","name":"mip.cls.basemipexpression","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipexpression"],"subclasses":[],"implements":[],"members":[],"meta":{}});

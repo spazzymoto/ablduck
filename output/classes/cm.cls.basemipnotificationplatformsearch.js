@@ -1,1 +1,0 @@
-Ext.data.JsonP.cm_cls_basemipnotificationplatformsearch({"files":[],"uses":[],"id":"class-cm.cls.basemipnotificationplatformsearch","tagname":"class","name":"cm.cls.basemipnotificationplatformsearch","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipnotificationplatformsearch"],"subclasses":[],"implements":[],"members":[],"meta":{}});

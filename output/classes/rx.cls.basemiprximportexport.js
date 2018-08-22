@@ -1,1 +1,0 @@
-Ext.data.JsonP.rx_cls_basemiprximportexport({"files":[],"uses":[],"id":"class-rx.cls.basemiprximportexport","tagname":"class","name":"rx.cls.basemiprximportexport","extends":"","author":"","comment":"","icon":"class","superclasses":["rx.cls.basemiprximportexport"],"subclasses":[],"implements":[],"members":[],"meta":{}});

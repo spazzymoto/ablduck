@@ -1,1 +1,0 @@
-Ext.data.JsonP.wf_cls_basemipwfsearch({"files":[],"uses":[],"id":"class-wf.cls.basemipwfsearch","tagname":"class","name":"wf.cls.basemipwfsearch","extends":"","author":"","comment":"","icon":"class","superclasses":["wf.cls.basemipwfsearch"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.cm_cls_basemipcmmedium({"files":[],"uses":[],"id":"class-cm.cls.basemipcmmedium","tagname":"class","name":"cm.cls.basemipcmmedium","extends":"","author":"","comment":"","icon":"class","superclasses":["cm.cls.basemipcmmedium"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipdecision({"files":[],"uses":[],"id":"class-mip.cls.basemipdecision","tagname":"class","name":"mip.cls.basemipdecision","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipdecision"],"subclasses":[],"implements":[],"members":[],"meta":{}});

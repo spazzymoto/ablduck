@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipquery({"files":[],"uses":[],"id":"class-mip.cls.basemipquery","tagname":"class","name":"mip.cls.basemipquery","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipquery"],"subclasses":[],"implements":[],"members":[],"meta":{}});

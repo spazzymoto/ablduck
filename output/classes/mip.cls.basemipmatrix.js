@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipmatrix({"files":[],"uses":[],"id":"class-mip.cls.basemipmatrix","tagname":"class","name":"mip.cls.basemipmatrix","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipmatrix"],"subclasses":[],"implements":[],"members":[],"meta":{}});

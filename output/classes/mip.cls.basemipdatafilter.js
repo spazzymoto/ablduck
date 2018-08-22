@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemipdatafilter({"files":[],"uses":[],"id":"class-mip.cls.basemipdatafilter","tagname":"class","name":"mip.cls.basemipdatafilter","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemipdatafilter"],"subclasses":[],"implements":[],"members":[],"meta":{}});

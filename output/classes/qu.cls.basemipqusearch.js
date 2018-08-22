@@ -1,1 +1,0 @@
-Ext.data.JsonP.qu_cls_basemipqusearch({"files":[],"uses":[],"id":"class-qu.cls.basemipqusearch","tagname":"class","name":"qu.cls.basemipqusearch","extends":"","author":"","comment":"","icon":"class","superclasses":["qu.cls.basemipqusearch"],"subclasses":[],"implements":[],"members":[],"meta":{}});

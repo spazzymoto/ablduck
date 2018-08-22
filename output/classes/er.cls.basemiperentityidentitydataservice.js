@@ -1,1 +1,0 @@
-Ext.data.JsonP.er_cls_basemiperentityidentitydataservice({"files":[],"uses":[],"id":"class-er.cls.basemiperentityidentitydataservice","tagname":"class","name":"er.cls.basemiperentityidentitydataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemiperentityidentitydataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

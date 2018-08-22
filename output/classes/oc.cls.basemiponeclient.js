@@ -1,1 +1,0 @@
-Ext.data.JsonP.oc_cls_basemiponeclient({"files":[],"uses":[],"id":"class-oc.cls.basemiponeclient","tagname":"class","name":"oc.cls.basemiponeclient","extends":"","author":"","comment":"","icon":"class","superclasses":["oc.cls.basemiponeclient"],"subclasses":[],"implements":[],"members":[],"meta":{}});

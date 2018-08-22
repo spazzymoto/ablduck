@@ -1,1 +1,0 @@
-Ext.data.JsonP.mip_cls_basemiputility({"files":[],"uses":[],"id":"class-mip.cls.basemiputility","tagname":"class","name":"mip.cls.basemiputility","extends":"","author":"","comment":"","icon":"class","superclasses":["mip.cls.basemiputility"],"subclasses":[],"implements":[],"members":[],"meta":{}});

@@ -1,1 +1,0 @@
-Ext.data.JsonP.ca_cls_basemipcadataservice({"files":[],"uses":[],"id":"class-ca.cls.basemipcadataservice","tagname":"class","name":"ca.cls.basemipcadataservice","extends":"","author":"","comment":"","icon":"class","superclasses":["ca.cls.basemipcadataservice"],"subclasses":[],"implements":[],"members":[],"meta":{}});

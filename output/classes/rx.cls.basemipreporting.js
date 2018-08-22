@@ -1,1 +1,0 @@
-Ext.data.JsonP.rx_cls_basemipreporting({"files":[],"uses":[],"id":"class-rx.cls.basemipreporting","tagname":"class","name":"rx.cls.basemipreporting","extends":"","author":"","comment":"","icon":"class","superclasses":["rx.cls.basemipreporting"],"subclasses":[],"implements":[],"members":[],"meta":{}});

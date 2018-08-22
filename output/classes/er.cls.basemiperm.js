@@ -1,1 +1,0 @@
-Ext.data.JsonP.er_cls_basemiperm({"files":[],"uses":[],"id":"class-er.cls.basemiperm","tagname":"class","name":"er.cls.basemiperm","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.basemiperm"],"subclasses":[],"implements":[],"members":[],"meta":{}});

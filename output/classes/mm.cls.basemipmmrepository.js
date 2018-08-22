@@ -1,1 +1,0 @@
-Ext.data.JsonP.mm_cls_basemipmmrepository({"files":[],"uses":[],"id":"class-mm.cls.basemipmmrepository","tagname":"class","name":"mm.cls.basemipmmrepository","extends":"","author":"","comment":"","icon":"class","superclasses":["mm.cls.basemipmmrepository"],"subclasses":[],"implements":[],"members":[],"meta":{}});

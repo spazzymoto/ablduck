@@ -1,1 +1,0 @@
-Ext.data.JsonP.ca_cls_mipcalendar({"files":[],"uses":[],"id":"class-ca.cls.mipcalendar","tagname":"class","name":"ca.cls.mipcalendar","extends":"","author":"","comment":"","icon":"class","superclasses":["ca.cls.mipcalendar"],"subclasses":[],"implements":[],"members":[],"meta":{}});

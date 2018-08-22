@@ -1,1 +1,0 @@
-Ext.data.JsonP.er_cls_baseerbusinesstype({"files":[],"uses":[],"id":"class-er.cls.baseerbusinesstype","tagname":"class","name":"er.cls.baseerbusinesstype","extends":"","author":"","comment":"","icon":"class","superclasses":["er.cls.baseerbusinesstype"],"subclasses":[],"implements":[],"members":[],"meta":{}});
