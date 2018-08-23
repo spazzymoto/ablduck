@@ -103,8 +103,7 @@ Ext.define('Docs.controller.Tabs', {
             '[componentCls=doctabs]': {
                 tabActivate: function(url, opts) {
                     Docs.History.push(url, opts);
-                },
-                scope: this
+                }
             }
         });
     },

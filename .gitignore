@@ -1,0 +1,4 @@
+output/
+build/production/
+build/temp/
+data.js
