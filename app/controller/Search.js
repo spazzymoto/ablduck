@@ -69,16 +69,16 @@ Ext.define('Docs.controller.Search', {
 
                     if (ev.keyCode === Ext.EventObject.UP) {
                         if (curIndex === undefined) {
-                            selModel.select(0);
+                            selModel.select(0, false, true);
                         } else {
-                            selModel.select(curIndex === 0 ? lastIndex : (curIndex - 1));
+                            selModel.select(curIndex === 0 ? lastIndex : (curIndex - 1), false, true);
                         }
                     }
                     else if (ev.keyCode === Ext.EventObject.DOWN) {
                         if (curIndex === undefined) {
-                            selModel.select(0);
+                            selModel.select(0, false, true);
                         } else {
-                            selModel.select(curIndex === lastIndex ? 0 : curIndex + 1);
+                            selModel.select(curIndex === lastIndex ? 0 : curIndex + 1, false, true);
                         }
                     }
                     else if (ev.keyCode === Ext.EventObject.ENTER) {
