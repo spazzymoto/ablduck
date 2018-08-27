@@ -126,7 +126,7 @@
     position: absolute;
     right: 5px;
     top: 8px;
-    button {
+    a[role="button"] {
       cursor: pointer;
       display: block;
       width: 14px;

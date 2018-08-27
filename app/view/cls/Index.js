@@ -40,6 +40,6 @@ Ext.define('Docs.view.cls.Index', {
      */
     getTab: function() {
         var enabled = (Docs.data.classes || []).length > 0;
-        return enabled ? {cls: 'classes', href: '#!/class', tooltip: 'Class Documentation'} : false;
+        return enabled ? {text: 'Class Documentation', href: '#!/class', tooltip: 'Class Documentation'} : false;
     }
 });

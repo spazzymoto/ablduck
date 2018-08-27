@@ -27,6 +27,12 @@
     &.singleton .class-source-link {
       background: url(./images/singleton-m.png) no-repeat 0 -5px; }
 
+    &.interface .class-source-link {
+      background: url(./images/class-m.png) no-repeat 0 -5px; }
+
+    &.procedure .class-source-link {
+      background: url(./images/class-m.png) no-repeat 0 -5px; }
+
     
     // View source... tooltip when hovering class name
     span.class-source-tip {

@@ -182,7 +182,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                 "</div>",
                                                 "<a href=\"#!/procedure/{parent.name}-constructor-{id}\" class=\"name expandable\">NEW {name}</a>( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {name}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
                                                     "</tpl>",
                                                 " )",
                                                 "<span class=\"signature\">",
@@ -218,7 +218,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "<ul>",
                                                             "<tpl for=\"parameters\">",
                                                                 "<li>",
-                                                                    "<span class=\"pre\">{mode} {name} : {[this.datatypeLink(values.datatype)]}</span>",
+                                                                    "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
                                                                         "{comment}",
                                                                     "</div>",
@@ -287,7 +287,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-method-{id}\" class=\"name expandable\">{name}</a>:Publish( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {name}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
                                                     "</tpl>",
                                                 " ) : {[this.datatypeLink(values.returns.datatype)]}",
                                                 "<span class=\"signature\">",
@@ -325,7 +325,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "<ul>",
                                                             "<tpl for=\"parameters\">",
                                                                 "<li>",
-                                                                    "<span class=\"pre\">{mode} {name} : {[this.datatypeLink(values.datatype)]}</span>",
+                                                                    "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
                                                                         "{comment}",
                                                                     "</div>",
@@ -425,9 +425,12 @@ Ext.define('Docs.view.cls.Overview', {
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-method-{id}\" class=\"name expandable\">{name}</a>( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {name}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
                                                     "</tpl>",
-                                                " ) : {[this.datatypeLink(values.returns.datatype)]}",
+                                                " ) ",
+                                                "<tpl if=\"returns.datatype\">",
+                                                    ": {[this.datatypeLink(values.returns.datatype)]}",
+                                                "</tpl>",
                                                 "<span class=\"signature\">",
                                                     "<tpl if=\"meta.private\"><span class=\"private\">PRIVATE</span></tpl>",
                                                     "<tpl if=\"meta.protected\"><span class=\"protected\">PROTECTED</span></tpl>",
@@ -464,7 +467,7 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "<ul>",
                                                             "<tpl for=\"parameters\">",
                                                                 "<li>",
-                                                                    "<span class=\"pre\">{mode} {name} : {[this.datatypeLink(values.datatype)]}</span>",
+                                                                    "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
                                                                         "{comment}",
                                                                     "</div>",
@@ -473,15 +476,17 @@ Ext.define('Docs.view.cls.Overview', {
                                                         "</ul>",
                                                         
                                                     "</tpl>",
-                                                    "<h3 class=\"pa\">Returns</h3>",
-                                                    "<ul>",
-                                                        "<li>",
-                                                            "<span class=\"pre\">{[this.datatypeLink(values.returns.datatype)]}</span>",
-                                                            "<div class=\"sub-desc\">",
-                                                                "{returns.comment}",
-                                                            "</div>",
-                                                        "</li>",
-                                                    "</ul>",
+                                                    "<tpl if=\"returns.datatype\">",
+                                                        "<h3 class=\"pa\">Returns</h3>",
+                                                        "<ul>",
+                                                            "<li>",
+                                                                "<span class=\"pre\">{[this.datatypeLink(values.returns.datatype)]}</span>",
+                                                                "<div class=\"sub-desc\">",
+                                                                    "{returns.comment}",
+                                                                "</div>",
+                                                            "</li>",
+                                                        "</ul>",
+                                                    "</tpl>",
                                                 "</div>",
                                             "</div>",
                                         "</div>",
@@ -647,6 +652,17 @@ Ext.define('Docs.view.cls.Overview', {
                     }
 
                     return datatype;
+                },
+
+                ttOrDsLink: function(name) {
+                    for (var i = 0; i < docClass.members.length; i++) {
+                        var ttords = docClass.members[i];
+                        if ((ttords.tagname == 'temptable' || ttords.tagname == 'dataset') && ttords.name == name) {
+                            return "<a href=\"#!/class/" + ttords.owner + "-" + ttords.id + "\" rel=\"" + ttords.owner + "-" + ttords.id + "\" class=\"docClass\">" + ttords.name + "</a>";
+                        }
+                    }
+
+                    return name;
                 }
             }
         );

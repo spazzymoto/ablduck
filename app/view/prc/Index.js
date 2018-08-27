@@ -40,6 +40,6 @@ Ext.define('Docs.view.prc.Index', {
      */
     getTab: function() {
         var enabled = (Docs.data.procedures || []).length > 0;
-        return enabled ? {cls: 'procedures', href: '#!/procedure', tooltip: 'Procedure Documentation'} : false;
+        return enabled ? {text: 'Procedure Documentation', href: '#!/procedure', tooltip: 'Procedure Documentation'} : false;
     }
 });
