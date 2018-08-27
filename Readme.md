@@ -1,34 +1,17 @@
-# Docs/app
+## Description
 
-This folder contains the javascript files for the application.
+Generates documentation from OpenEdge classes & procedures. ABLDuck is based of the JSDuck documentation tool for JavaScript.
 
-# Docs/resources
+### Features
+* JavaDoc style comments
+* ABLDoc style comments
+* Markdown support
+* Globally seachable on class name, method name, property name, event name, procedure name and function name
+* Syntax highlighted code examples in the comment
+* Tag support: {@link}, @author, @internal, @deprecated, @param and @return
+* View class menu by package or inheritance
+* Automatic linking of known datatypes
 
-This folder contains static resources (typically an `"images"` folder as well).
+## Usage
 
-# Docs/overrides
-
-This folder contains override classes. All overrides in this folder will be 
-automatically included in application builds if the target class of the override
-is loaded.
-
-# Docs/sass/etc
-
-This folder contains misc. support code for sass builds (global functions, 
-mixins, etc.)
-
-# Docs/sass/src
-
-This folder contains sass files defining css rules corresponding to classes
-included in the application's javascript code build.  By default, files in this 
-folder are mapped to the application's root namespace, 'Docs'. The
-namespace to which files in this directory are matched is controlled by the
-app.sass.namespace property in Docs/.sencha/app/sencha.cfg. 
-
-# Docs/sass/var
-
-This folder contains sass files defining sass variables corresponding to classes
-included in the application's javascript code build.  By default, files in this 
-folder are mapped to the application's root namespace, 'Docs'. The
-namespace to which files in this directory are matched is controlled by the
-app.sass.namespace property in Docs/.sencha/app/sencha.cfg. 
+Please see the [ABLDuck](https://github.com/Riverside-Software/pct/wiki/ABLDuck) task documentation in the PCT tool for more information. This is just the repository for the template.
