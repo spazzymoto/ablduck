@@ -3,6 +3,10 @@
 
     "requires": [
     ],
+    
+    "resources": [
+        "customlink.js"
+        ],
 
     "id": "ae1335fb-cc98-48a9-b069-552ddb682e87"
 }

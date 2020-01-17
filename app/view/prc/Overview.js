@@ -106,7 +106,7 @@ Ext.define('Docs.view.prc.Overview', {
                         "<tpl for=\"uses\">",
                             "<tpl if=\"xindex===1\"><h4>Uses</h4></tpl>",
                             "<div class=\"dependency\">",
-                                '{[ values[values.length - 1] == "*" ? "<strong>" + values + "</strong>" : "<a href=\'#!/class/" + values + "\' rel=\'" + values + "\' class=\'docClass\'>" + values + "</a>" ]}',
+                                '{[ values[values.length - 1] == "*" ? "<strong>" + values + "</strong>" : this.datatypeLink(values) ]}',
                             "</div>",
                         "</tpl>",
 
@@ -235,7 +235,7 @@ Ext.define('Docs.view.prc.Overview', {
 
                     "<tpl if=\"this.hasMember(members, 'procedure')\">",
                         "<div class=\"members-section\">",
-                            "<h3 class=\"members-title icon-constructor\">Internal Procedures</h3>",
+                            "<h3 class=\"members-title icon-procedure\">Internal Procedures</h3>",
                             "<div class=\"subsection\">",
 
                                 "<tpl for=\"members\">",
@@ -300,7 +300,7 @@ Ext.define('Docs.view.prc.Overview', {
 
                     "<tpl if=\"this.hasMember(members, 'function')\">",
                         "<div class=\"members-section\">",
-                            "<h3 class=\"members-title icon-constructor\">Internal Functions</h3>",
+                            "<h3 class=\"members-title icon-function\">Internal Functions</h3>",
                             "<div class=\"subsection\">",
 
                                 "<tpl for=\"members\">",
@@ -519,6 +519,23 @@ Ext.define('Docs.view.prc.Overview', {
                             Docs.data.classLinkCache[datatype] = "<a href=\"#!/class/" + datatype + "\" rel=\"" + datatype + "\" class=\"docClass\">" + datatype + "</a>";
                             return Docs.data.classLinkCache[datatype];
                         }
+                    }
+
+                    // Search for external class
+                    try {
+
+                        var vLink;
+                        if (typeof(getCustomHyperlink) === typeof(Function)){
+                            vLink = getCustomHyperlink(datatype);
+                        }
+
+                        if (vLink){
+                            Docs.data.classLinkCache[datatype] = vLink;
+                            return Docs.data.classLinkCache[datatype];
+                        }
+                    } catch (err) {
+                        console.log("Could not load customlink");
+                        console.log(err);
                     }
 
                     return datatype;
