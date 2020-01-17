@@ -1,3 +1,7 @@
+# AblDuck Template
+
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fspazzymoto%2Fablduck%2Fbadge)](https://actions-badge.atrox.dev/spazzymoto/ablduck/goto)
+
 ## Description
 
 Generates documentation from OpenEdge classes & procedures. ABLDuck is based of the JSDuck documentation tool for JavaScript.
@@ -25,3 +29,5 @@ See a live [Example](https://spazzymoto.github.io/ablduck-example). Be sure to u
 Please see the [ABLDuck](https://github.com/Riverside-Software/pct/wiki/ABLDuck) task documentation in the PCT tool for more information. This is just the repository for the template.
 
 ![screenshot](https://raw.githubusercontent.com/spazzymoto/ablduck/master/screenshot.png)
+
+
