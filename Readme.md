@@ -14,6 +14,12 @@ Generates documentation from OpenEdge classes & procedures. ABLDuck is based of 
 
 See a live [Example](https://spazzymoto.github.io/ablduck-example). Be sure to use the "show" drop down on the right of the screen to filter public/protected/private/inherited/deprecated/internal members.
 
+
+## Build
+* Install Sencha CMD 4 (Installers can be found in SenchaCMDInstallers)
+* From the root directory execute "sencha app build"
+* Build can be found in build/production
+
 ## Usage
 
 Please see the [ABLDuck](https://github.com/Riverside-Software/pct/wiki/ABLDuck) task documentation in the PCT tool for more information. This is just the repository for the template.
