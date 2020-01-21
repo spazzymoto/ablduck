@@ -21,7 +21,17 @@
     background: url(./images/icons.png) no-repeat 0 -0px; }
 
   .icon-class {
-    background: url(./images/icons.png) no-repeat 0 -40px; }
+    background: url(./images/class-icon.svg) no-repeat 0 0;
+    background-size: contain;
+  }
+  .icon-enum {
+    background: url(./images/enum-icon.svg) no-repeat 0 0;
+    background-size: contain;
+  }
+  .icon-interface {
+    background: url(./images/interface-icon.svg) no-repeat 0 0;
+    background-size: contain;
+  }
   .icon-constructor {
     background: url(./images/icons.png) no-repeat 0 -240px; }
   .icon-destructor {

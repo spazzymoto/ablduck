@@ -106,14 +106,14 @@ Ext.define('Docs.view.cls.Overview', {
                     "<tpl for=\"uses\">",
                         "<tpl if=\"xindex===1\"><h4>Uses</h4></tpl>",
                         "<div class=\"dependency\">",
-                            '{[ values[values.length - 1] == "*" ? "<strong>" + values + "</strong>" : "<a href=\'#!/class/" + values + "\' rel=\'" + values + "\' class=\'docClass\'>" + values + "</a>" ]}',
+                            '{[ values[values.length - 1] == "*" ? "<strong>" + values + "</strong>" : this.datatypeLink(values) ]}',
                         "</div>",
                     "</tpl>",
                     
                     "<tpl for=\"superclasses\">",
                         "<tpl if=\"xindex===1\"><h4>Hierarchy</h4></tpl>",
                         '<div class="subclass<tpl if="xindex===1"> first-child</tpl>" style="{[ xindex > 1 ? \"margin-left:\" + (15 + (12 * (xindex-2))) + \"px; \" : "" ]}list-style: none;">',
-                            '{[ xindex == xcount ? "<strong>" + values + "</strong>" : "<a href=\'#!/class/" + values + "\' rel=\'" + values + "\' class=\'docClass\'>" + values + "</a>" ]}',
+                            '{[ xindex == xcount ? "<strong>" + values + "</strong>" : this.datatypeLink(values) ]}',
                         "</div>",
                     "</tpl>",
 
@@ -649,6 +649,23 @@ Ext.define('Docs.view.cls.Overview', {
                             Docs.data.classLinkCache[datatype] = "<a href=\"#!/class/" + datatype + "\" rel=\"" + datatype + "\" class=\"docClass\">" + datatype + "</a>";
                             return Docs.data.classLinkCache[datatype];
                         }
+                    }
+
+                    // Search for external class
+                    try {
+
+                        var vLink;
+                        if (typeof(getCustomHyperlink) === typeof(Function)){
+                            vLink = getCustomHyperlink(datatype);
+                        }
+
+                        if (vLink){
+                            Docs.data.classLinkCache[datatype] = vLink;
+                            return Docs.data.classLinkCache[datatype];
+                        }
+                    } catch (err) {
+                        console.log("Could not load customlink");
+                        console.log(err);
                     }
 
                     return datatype;

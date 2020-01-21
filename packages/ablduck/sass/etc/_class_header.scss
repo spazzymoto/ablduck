@@ -19,21 +19,31 @@
     .class-source-link {
       color: $docs-heading-color;
       margin-left: -3px;
-      padding: 0.1em 0 0.4em 2.3em; }
+      padding: 0.1em 0 0.4em 2.3em;
+    }
     &.class .class-source-link {
-      background: url(./images/class-m.png) no-repeat 0 -5px; }
-    &.component .class-source-link {
-      background: url(./images/component-m.png) no-repeat 0 -5px; }
-    &.singleton .class-source-link {
-      background: url(./images/singleton-m.png) no-repeat 0 -5px; }
-
+      background: url(./images/class-icon.svg) no-repeat 5px 0;
+      background-size: contain;
+    }
+    &.enum .class-source-link {
+      background: url(./images/enum-icon.svg) no-repeat 5px 0;
+      background-size: contain;
+    }
     &.interface .class-source-link {
-      background: url(./images/class-m.png) no-repeat 0 -5px; }
+      background: url(./images/interface-icon.svg) no-repeat 5px 0;
+      background-size: contain;
+    }
+    &.component .class-source-link {
+      background: url(./images/component-m.png) no-repeat 0 -5px;
+    }
+    &.singleton .class-source-link {
+      background: url(./images/singleton-m.png) no-repeat 0 -5px;
+    }
 
     &.procedure .class-source-link {
-      background: url(./images/class-m.png) no-repeat 0 -5px; }
+      background: url(./images/class-m.png) no-repeat 0 -5px;
+    }
 
-    
     // View source... tooltip when hovering class name
     span.class-source-tip {
       font-size: 0.5em;
@@ -43,7 +53,9 @@
       color: #fff;
       @include transition(color, 0.2s, linear);
       &.hover {
-        color: #929292; } }
+        color: #929292;
+      }
+    }
 
     .signature {
       span {
@@ -58,8 +70,8 @@
         color: white;
         background-color: #aaa;
       }
-      @include signature-colors; 
-    } 
+      @include signature-colors;
+    }
   }
 
   .guide-container {
@@ -71,9 +83,13 @@
         font-weight: bold;
         text-align: center;
         color: #333;
-        padding: 1px 2px; }
+        padding: 1px 2px;
+      }
       td {
-        padding: 3px; } } }
+        padding: 3px;
+      }
+    }
+  }
 
   // The print button
   .print {
@@ -88,4 +104,7 @@
     // Adjust in bottom-left direction in guides context
     &.guide {
       right: 15px;
-      top: 15px; } } }
+      top: 15px;
+    }
+  }
+}
