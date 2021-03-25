@@ -730,7 +730,7 @@ Ext.define('Docs.view.cls.Overview', {
                     for (var i = 0; i < docClass.members.length; i++) {
                         var ttords = docClass.members[i];
                         if ((ttords.tagname == 'temptable' || ttords.tagname == 'dataset') && ttords.name == name) {
-                            return "<a href=\"#!/procedure/" + ttords.owner + "-" + ttords.id + "\" rel=\"" + ttords.owner + "-" + ttords.id + "\" class=\"docClass\">" + ttords.name + "</a>";
+                            return "<a href=\"#!/class/" + ttords.owner + "-" + ttords.id + "\" rel=\"" + ttords.owner + "-" + ttords.id + "\" class=\"docClass\">" + ttords.name + "</a>";
                         }
                     }
 
