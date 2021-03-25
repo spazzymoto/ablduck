@@ -75,6 +75,9 @@ Ext.define('Docs.view.prc.Overview', {
         if (!Docs.data.classLinkCache)
             Docs.data.classLinkCache = {};
 
+        if (!Docs.data.linkCache)
+            Docs.data.linkCache = {};
+
         this.docClass = docClass;
 
         if (this.toolbar) {
@@ -126,11 +129,11 @@ Ext.define('Docs.view.prc.Overview', {
                     "<tpl if=\"meta.deprecated\">",
                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                            "{meta.deprecated.text}",
+                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                         "</div>",
                         "</br>",
                     "</tpl>",
-                    "{comment}",
+                    "{[this.parseLinks(values.comment)]}",
 
                     "<br>",
                     "<tpl if=\"parameters\">",
@@ -140,7 +143,7 @@ Ext.define('Docs.view.prc.Overview', {
                                 "<li>",
                                     "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                     "<div class=\"sub-desc\">",
-                                        "{comment}",
+                                        "{[this.parseLinks(values.comment)]}",
                                     "</div>",
                                 "</li>",
                             "</tpl>",
@@ -167,7 +170,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                 "</div>",
                                                 "<a href=\"#!/class/{parent.name}-method-{id}\" class=\"name expandable\">{name}</a>:Publish( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.datatypeLink(values.datatype, this.ttOrDsLink(values.name))]}",
                                                     "</tpl>",
                                                 " ) : {[this.datatypeLink(values.returns.datatype)]}",
                                                 "<span class=\"signature\">",
@@ -182,7 +185,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "</div>",
 
                                             "<div class=\"description\">",
-                                                "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                "<div class=\"short\">{[this.getShortDoc(this.parseLinks(values.comment))]}</div>",
                                                 "<div class=\"long\">",
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
@@ -193,11 +196,11 @@ Ext.define('Docs.view.prc.Overview', {
                                                     "<tpl if=\"meta.deprecated\">",
                                                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                                                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                                                            "{meta.deprecated.text}",
+                                                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    "{comment}",
+                                                    "{[this.parseLinks(values.comment)]}",
 
                                                     "<br>",
                                                     "<tpl if=\"parameters\">",
@@ -207,7 +210,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                                 "<li>",
                                                                     "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
-                                                                        "{comment}",
+                                                                        "{[this.parseLinks(values.comment)]}",
                                                                     "</div>",
                                                                 "</li>",
                                                             "</tpl>",
@@ -219,7 +222,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                         "<li>",
                                                             "<span class=\"pre\">{[this.datatypeLink(values.returns.datatype)]}</span>",
                                                             "<div class=\"sub-desc\">",
-                                                                "{returns.comment}",
+                                                                "{[this.parseLinks(values.returns.comment)]}",
                                                             "</div>",
                                                         "</li>",
                                                     "</ul>",
@@ -245,7 +248,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "<div class=\"title\">",
                                                 "<a href=\"#!/procedure/{parent.name}-procedure-{id}\" class=\"name expandable\">{name}</a>( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.datatypeLink(values.datatype, this.ttOrDsLink(values.name))]}",
                                                     "</tpl>",
                                                 " )",
                                                 "<span class=\"signature\">",
@@ -256,7 +259,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "</div>",
 
                                             "<div class=\"description\">",
-                                                "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                "<div class=\"short\">{[this.getShortDoc(this.parseLinks(values.comment))]}</div>",
                                                 "<div class=\"long\">",
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
@@ -267,11 +270,11 @@ Ext.define('Docs.view.prc.Overview', {
                                                     "<tpl if=\"meta.deprecated\">",
                                                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                                                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                                                            "{meta.deprecated.text}",
+                                                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    "{comment}",
+                                                    "{[this.parseLinks(values.comment)]}",
 
                                                     "<br>",
                                                     "<tpl if=\"parameters\">",
@@ -281,7 +284,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                                 "<li>",
                                                                     "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
-                                                                        "{comment}",
+                                                                        "{[this.parseLinks(values.comment)]}",
                                                                     "</div>",
                                                                 "</li>",
                                                             "</tpl>",
@@ -310,7 +313,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "<div class=\"title\">",
                                                 "<a href=\"#!/procedure/{parent.name}-function-{id}\" class=\"name expandable\">{name}</a>( ",
                                                     "<tpl for=\"parameters\">",
-                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.ttOrDsLink(values.name)]}",
+                                                        "<tpl if=\"xindex!==1\">, </tpl>{mode} {[this.datatypeLink(values.datatype, this.ttOrDsLink(values.name))]}",
                                                     "</tpl>",
                                                 " ) ",
                                                 "<tpl if=\"returns.datatype\">",
@@ -324,7 +327,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "</div>",
 
                                             "<div class=\"description\">",
-                                                "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                "<div class=\"short\">{[this.getShortDoc(this.parseLinks(values.comment))]}</div>",
                                                 "<div class=\"long\">",
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
@@ -335,11 +338,11 @@ Ext.define('Docs.view.prc.Overview', {
                                                     "<tpl if=\"meta.deprecated\">",
                                                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                                                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                                                            "{meta.deprecated.text}",
+                                                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    "{comment}",
+                                                    "{[this.parseLinks(values.comment)]}",
 
                                                     "<br>",
                                                     "<tpl if=\"parameters\">",
@@ -349,7 +352,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                                 "<li>", 
                                                                     "<span class=\"pre\">{mode} {[this.ttOrDsLink(values.name)]} : {[this.datatypeLink(values.datatype)]}</span>",
                                                                     "<div class=\"sub-desc\">",
-                                                                        "{comment}",
+                                                                        "{[this.parseLinks(values.comment)]}",
                                                                     "</div>",
                                                                 "</li>",
                                                             "</tpl>",
@@ -362,7 +365,7 @@ Ext.define('Docs.view.prc.Overview', {
                                                             "<li>",
                                                                 "<span class=\"pre\">{[this.datatypeLink(values.returns.datatype)]}</span>",
                                                                 "<div class=\"sub-desc\">",
-                                                                    "{returns.comment}",
+                                                                    "{[this.parseLinks(values.returns.comment)]}",
                                                                 "</div>",
                                                             "</li>",
                                                         "</ul>",
@@ -402,7 +405,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "</div>",
 
                                             "<div class=\"description\">",
-                                                "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                "<div class=\"short\">{[this.getShortDoc(this.parseLinks(values.comment))]}</div>",
                                                 "<div class=\"long\">",
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
@@ -413,11 +416,11 @@ Ext.define('Docs.view.prc.Overview', {
                                                     "<tpl if=\"meta.deprecated\">",
                                                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                                                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                                                            "{meta.deprecated.text}",
+                                                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    "{comment}",
+                                                    "{[this.parseLinks(values.comment)]}",
 
                                                     "<br>",
 
@@ -456,7 +459,7 @@ Ext.define('Docs.view.prc.Overview', {
                                             "</div>",
 
                                             "<div class=\"description\">",
-                                                "<div class=\"short\">{[this.getShortDoc(values.comment)]}</div>",
+                                                "<div class=\"short\">{[this.getShortDoc(this.parseLinks(values.comment))]}</div>",
                                                 "<div class=\"long\">",
                                                     "<tpl if=\"meta.internal\">",
                                                         "<div class=\"rounded-box private-box\">",
@@ -467,11 +470,11 @@ Ext.define('Docs.view.prc.Overview', {
                                                     "<tpl if=\"meta.deprecated\">",
                                                         "<div class=\"rounded-box deprecated-box deprecated-tag-box\">",
                                                             "<p>This {tagname} has been <strong>deprecated</strong> since {meta.deprecated.version}</p>",
-                                                            "{meta.deprecated.text}",
+                                                            "{[this.parseLinks(values.meta.deprecated.text)]}",
                                                         "</div>",
                                                         "</br>",
                                                     "</tpl>",
-                                                    "{comment}",
+                                                    "{[this.parseLinks(values.comment)]}",
 
                                                     "<br>",
 
@@ -502,22 +505,74 @@ Ext.define('Docs.view.prc.Overview', {
                     return foundMember;
                 },
 
+                parseLinks: function(comment) {
+                    var linkRegex = /{@link\s+(\S+)\s*(.*?)}/gi;
+
+                    var match = linkRegex.exec(comment);
+
+                    while (match != null) {
+                        var linkTag = match[0];
+
+                        // If cached
+                        var cachedLink = Docs.data.linkCache[linkTag];
+                        if (cachedLink) {
+                            comment = comment.replace(linkTag, cachedLink);
+                        } else {
+                            var linkTo = match[1];
+                            var dataType = linkTo.split('-')[0];
+                            var linkText = match[2] || dataType;
+
+                            var link = linkText;
+
+                            // Is it a class
+                            for (var i = 0; i < Docs.data.classes.length; i++) {
+                                var lookupClass = Docs.data.classes[i];
+                                if (lookupClass.name == dataType) {
+                                    var link = "<a href=\"#!/class/" + linkTo + "\" rel=\"" + linkTo + "\" class=\"docClass\">" + linkText + "</a>";
+                                    break;
+                                }
+                            }
+
+                            if (link === linkText) {
+                                var procedures = Docs.data.procedures || [];
+                                // Is it a procedure
+                                for (var i = 0; i < procedures.length; i++) {
+                                    var lookupProc = procedures[i];
+                                    if (lookupProc.name == dataType) {
+                                        var link = "<a href=\"#!/procedure/" + linkTo + "\" rel=\"" + linkTo + "\" class=\"docClass\">" + linkText + "</a>";
+                                        break;
+                                    }
+                                }
+                            }
+
+                            Docs.data.linkCache[linkTag] = link;
+                            comment = comment.replace(linkTag, link);
+                        }
+
+                        match = linkRegex.exec(comment);
+                    }
+
+                    return comment;
+                },
+
                 getShortDoc: function(comment) {
                     // TODO: strip html tags properly
                     return comment.replace(/<.*?>/g, '').substring(0, 100);
                 },
 
-                datatypeLink: function(datatype) {
-
-                    if (Docs.data.classLinkCache[datatype]){
-                        return Docs.data.classLinkCache[datatype];
+                datatypeLink: function(datatype, linkText) {
+                    if (!linkText) {
+                        linkText = datatype;
                     }
+                    var cacheKey = datatype + linkText;
+                    if (Docs.data.classLinkCache[cacheKey])
+                        return Docs.data.classLinkCache[cacheKey];
 
                     for (var i = 0; i < Docs.data.classes.length; i++) {
                         var lookupClass = Docs.data.classes[i];
                         if (lookupClass.name == datatype) {
-                            Docs.data.classLinkCache[datatype] = "<a href=\"#!/class/" + datatype + "\" rel=\"" + datatype + "\" class=\"docClass\">" + datatype + "</a>";
-                            return Docs.data.classLinkCache[datatype];
+                            Docs.data.classLinkCache[cacheKey] = "<a href=\"#!/class/" + datatype + "\" rel=\"" + datatype + "\" class=\"docClass\">" + linkText + "</a>";
+                            return Docs.data.classLinkCache[cacheKey];
                         }
                     }
 
@@ -530,15 +585,14 @@ Ext.define('Docs.view.prc.Overview', {
                         }
 
                         if (vLink){
-                            Docs.data.classLinkCache[datatype] = vLink;
-                            return Docs.data.classLinkCache[datatype];
+                            Docs.data.classLinkCache[cacheKey] = vLink;
+                            return Docs.data.classLinkCache[cacheKey];
                         }
                     } catch (err) {
                         console.log("Could not load customlink");
                         console.log(err);
                     }
-
-                    return datatype;
+                    return linkText;
                 },
 
                 ttOrDsLink: function(name) {
