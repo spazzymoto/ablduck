@@ -4,7 +4,7 @@
 
 ## Description
 
-Generates documentation from OpenEdge classes & procedures. ABLDuck is based of the JSDuck documentation tool for JavaScript.
+Generates documentation from OpenEdge classes & procedures. ABLDuck is based of the JSDuck documentation tool for JavaScript (TM).
 
 ### Features
 * JavaDoc style comments
