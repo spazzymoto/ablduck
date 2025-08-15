@@ -1,10 +1,10 @@
-# AblDuck Template
+# AblDuck
 
-[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fspazzymoto%2Fablduck%2Fbadge)](https://actions-badge.atrox.dev/spazzymoto/ablduck/goto)
+The previous version of ablduck has been moved to the sencha branch and will not be actively maintained anymore
 
 ## Description
 
-Generates documentation from OpenEdge classes & procedures. ABLDuck is based of the JSDuck documentation tool for JavaScript.
+A tool for hosting documentation generated from the PCT JSONDocumentation task.
 
 ### Features
 * JavaDoc style comments
@@ -16,18 +16,6 @@ Generates documentation from OpenEdge classes & procedures. ABLDuck is based of 
 * View class menu by package or inheritance
 * Automatic linking of known datatypes
 
-See a live [Example](https://spazzymoto.github.io/ablduck-example). Be sure to use the "show" drop down on the right of the screen to filter public/protected/private/inherited/deprecated/internal members.
-
-
-## Build
-* Install Sencha CMD 4 (Installers can be found in SenchaCMDInstallers)
-* From the root directory execute "sencha app build"
-* Build can be found in build/production
-
-## Usage
-
-Please see the [ABLDuck](https://github.com/Riverside-Software/pct/wiki/ABLDuck) task documentation in the PCT tool for more information. This is just the repository for the template.
-
-![screenshot](https://raw.githubusercontent.com/spazzymoto/ablduck/master/screenshot.png)
+See a live [Example](https://spazzymoto.github.io/netlib). Be sure to use the "show" drop down on the right of the screen to filter public/protected/private/inherited/deprecated/internal members.
 
 
